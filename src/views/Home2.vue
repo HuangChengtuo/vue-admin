@@ -7,7 +7,7 @@
     >
       <div class="logo">
         <img src="../assets/DD.png"/>
-        <span v-show="!collapsed">admin</span>
+        <span v-if="!collapsed">admin</span>
       </div>
       <Menu></Menu>
     </a-layout-sider>
@@ -50,31 +50,20 @@
 <style scoped lang="scss">
   #home {
     height: 100%;
-  }
 
-  .trigger {
-    font-size: 18px;
-    line-height: 64px;
-    padding: 0 24px;
-    cursor: pointer;
-    transition: color .3s;
+    .trigger {
+      font-size: 18px;
+      line-height: 64px;
+      padding: 0 24px;
+      cursor: pointer;
+      transition: color .3s;
 
-    :hover {
-      color: #1890ff;
+      :hover {
+        color: #1890ff;
+      }
     }
-  }
 
-  .logo {
-    height: 48px;
-    background: rgba(255, 255, 255, .2);
-    margin: 16px;
-    color: white;
 
-    span{
-      margin: 0 auto;
-    }
-    img {
-      height: 100%;
-    }
+
   }
 </style>
