@@ -34,11 +34,13 @@ export default new Router({
       children: [
         {
           path: 'hello',
+          name:'hello',
           component: HelloWorld
         },
         {
           path: 'about',
-          component: About
+          component: About,
+          name:'about'
         }
       ],
       beforeEnter: (to, from, next) => {

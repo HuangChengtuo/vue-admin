@@ -4,12 +4,13 @@
             :trigger="null"
             collapsible
             v-model="collapsed"
+            width="256px"
     >
       <div class="logo">
-        <img src="../assets/DD.png"/>
+        <img alt="logo" src="../assets/DD.png"/>
         <span v-show="!collapsed">admin</span>
       </div>
-      <Menu></Menu>
+      <Menu :collapsed="collapsed"></Menu>
     </a-layout-sider>
 
     <a-layout>
@@ -19,6 +20,7 @@
                 :type="collapsed ? 'menu-unfold' : 'menu-fold'"
                 @click="()=> collapsed = !collapsed"
         />
+        <h1 style="display: inline">{{this.$route.name}}</h1>
       </a-layout-header>
       <a-layout-content :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }">
         <router-view></router-view>
@@ -32,7 +34,7 @@
   import Menu from '@/components/Menu'
 
   export default {
-    name: 'home',
+    name:'home',
     components: {Menu},
     data() {
       return {
@@ -70,9 +72,12 @@
     margin: 16px;
     color: white;
 
-    span{
-      margin: 0 auto;
+    span {
+      margin: {
+        left: 24px;
+      };
     }
+
     img {
       height: 100%;
     }
