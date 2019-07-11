@@ -1,18 +1,21 @@
 <template>
   <div id="login">
+
     <a-form
             id="components-form-demo-normal-login"
             :form="form"
             class="login-form"
             @submit="handleSubmit"
     >
+      <img src="../assets/DD.png"/>
+      <h1 style="display: inline">DEMO</h1>
       <a-form-item>
         <a-input
                 v-decorator="[
           'userName',
-          { rules: [{ required: true, message: 'Please input your username!' }] }
+          { rules: [{ required: true, message: '请输入用户名！' }] }
         ]"
-                placeholder="Username"
+                placeholder="用户名"
         >
           <a-icon
                   slot="prefix"
@@ -25,10 +28,10 @@
         <a-input
                 v-decorator="[
           'password',
-          { rules: [{ required: true, message: 'Please input your Password!' }] }
+          { rules: [{ required: true, message: '请输入密码！' }] }
         ]"
                 type="password"
-                placeholder="Password"
+                placeholder="密码"
         >
           <a-icon
                   slot="prefix"
@@ -48,23 +51,23 @@
           }
         ]"
         >
-          Remember me
+          记住我
         </a-checkbox>
         <a
                 class="login-form-forgot"
                 href=""
         >
-          Forgot password
+          忘记密码？
         </a>
         <a-button
                 type="primary"
                 html-type="submit"
                 class="login-form-button"
         >
-          Log in
+          登录
         </a-button>
         Or <a href="">
-        register now!
+        立即注册！
       </a>
       </a-form-item>
     </a-form>
@@ -85,7 +88,7 @@
             console.log('Received values of form: ', values);
             this.$store.commit('login')
             this.$router.push({
-              name:'home',params:{user:values.userName}
+              name: 'home', params: {user: values.userName}
             })
           }
         })
@@ -95,8 +98,28 @@
 </script>
 
 <style scoped lang="scss">
+  #login {
+    background: gray;
+    height: 100%;
+  }
+
   #components-form-demo-normal-login {
-    display: inline-block;
+    background: white;
+    max-width: 400px;
+    padding: 24px{
+      top: 0px;
+    }
+    border-radius: 6px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    img {
+      width: 50%;
+      padding-right: 16px;
+      box-sizing: content-box;
+    }
 
     .login-form {
       max-width: 300px;

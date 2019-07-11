@@ -8,7 +8,7 @@
     >
       <div class="logo">
         <img alt="logo" src="../assets/DD.png"/>
-        <span v-show="!collapsed">admin</span>
+        <span v-show="!collapsed">DEMO</span>
       </div>
       <Menu :collapsed="collapsed"></Menu>
     </a-layout-sider>
@@ -21,6 +21,10 @@
                 @click="()=> collapsed = !collapsed"
         />
         <h1 style="display: inline">{{this.$route.name}}</h1>
+        <a-button
+                type="primary"
+                @click="logout()"
+        >Primary</a-button>
       </a-layout-header>
       <a-layout-content :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }">
         <router-view></router-view>
@@ -44,7 +48,7 @@
     methods: {
       logout() {
         this.$store.commit('logout')
-        this.$router.push('login')
+        this.$router.push('/login')
       }
     }
   }
@@ -80,6 +84,7 @@
 
     img {
       height: 100%;
+      padding-left: 2px;
     }
   }
 </style>

@@ -7,7 +7,6 @@
           style="max-width: 256px"
           theme="dark"
           v-model="selectedKeys"
-          @click="test"
   >
 
     <a-sub-menu key="sub1">
@@ -57,18 +56,29 @@
       return {
         rootSubmenuKeys: ['sub1', 'sub2', 'sub3'],
         openKeys: ['sub1'],
+        collapsedOpenKeys: [],
         uncollapsedOpenKeys: [],
-        selectedKeys:[]
+        selectedKeys: []
       }
     },
-    watch:{
+    watch: {
       collapsed: function () {
-        if(this.collapsed){
+        if (this.collapsed) {
           this.uncollapsedOpenKeys=this.openKeys
-          this.openKeys=[]
-        }else {
-          this.openKeys = this.uncollapsedOpenKeys
+          this.openKeys = []
+        }else{
+          this.openKeys=this.uncollapsedOpenKeys
         }
+      },
+      openKeys: function () {
+        if (this.collapsed && this.openKeys.length) {
+          this.collapsedOpenKeys = this.openKeys
+        } else if(!this.collapsed){
+          this.uncollapsedOpenKeys = this.openKeys
+        }
+      },
+      selectedKeys: function () {
+        this.uncollapsedOpenKeys = this.collapsedOpenKeys
       }
     },
     methods: {
@@ -80,8 +90,8 @@
           this.openKeys = latestOpenKey ? [latestOpenKey] : []
         }
       },
-      test(){
-        this.uncollapsedOpenKeys=this.openKeys
+      test() {
+        this.uncollapsedOpenKeys = this.openKeys
       }
     }
   }
