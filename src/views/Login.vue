@@ -40,7 +40,10 @@
           />
         </a-input>
       </a-form-item>
-      <a-form-item>
+      <a-form-item
+              :validateStatus="validateStatus"
+              :help="text"
+      >
         <a-checkbox
                 class="login-form-remember"
                 v-decorator="[
@@ -75,8 +78,17 @@
 </template>
 
 <script>
+
+  import axios from 'axios'
+
   export default {
     name: "Login",
+    data() {
+      return {
+        validateStatus:'error',
+        text:'用户名或密码错误'
+      }
+    },
     beforeCreate() {
       this.form = this.$form.createForm(this);
     },
@@ -85,11 +97,21 @@
         e.preventDefault();
         this.form.validateFields((err, values) => {
           if (!err) {
-            console.log('Received values of form: ', values);
-            this.$store.commit('login')
-            this.$router.push({
-              name: 'home', params: {user: values.userName}
-            })
+
+            axios.post('login.com', values)
+              .then((res) => {
+                console.log(res.data)
+              })
+
+            //console.log('Received values of form: ', values);
+
+
+            // this.$store.commit('login')
+            // this.$router.push({
+            //   name: 'home', params: {user: values.userName}
+            // })
+
+
           }
         })
       }
@@ -106,7 +128,7 @@
   #components-form-demo-normal-login {
     background: white;
     max-width: 400px;
-    padding: 24px{
+    padding: 24px {
       top: 0px;
     }
     border-radius: 6px;

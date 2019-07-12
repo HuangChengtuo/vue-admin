@@ -20,7 +20,7 @@
                 :type="collapsed ? 'menu-unfold' : 'menu-fold'"
                 @click="()=> collapsed = !collapsed"
         />
-        <h1 style="display: inline">{{this.$route.name}}</h1>
+        <h1 style="display: inline">{{this.$route.name}},{{this.$route.params.user}}</h1>
         <a-button
                 type="primary"
                 @click="logout()"
