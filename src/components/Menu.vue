@@ -13,7 +13,8 @@
       <span slot="title"><a-icon type="mail"/><span>Navigation One</span></span>
       <a-menu-item key="1.1">
         <router-link to="/home/hello">
-          Hello
+          <a-icon type="home"/>
+          主页
         </router-link>
       </a-menu-item>
 

@@ -31,7 +31,7 @@
           { rules: [{ required: true, message: '请输入密码！' }] }
         ]"
                 type="password"
-                placeholder="密码"
+                placeholder="密码:123456"
         >
           <a-icon
                   slot="prefix"
@@ -40,10 +40,7 @@
           />
         </a-input>
       </a-form-item>
-      <a-form-item
-              :validateStatus="validateStatus"
-              :help="text"
-      >
+      <a-form-item :validateStatus="validateStatus" :help="message">
         <a-checkbox
                 class="login-form-remember"
                 v-decorator="[
@@ -69,6 +66,8 @@
         >
           登录
         </a-button>
+      </a-form-item>
+      <a-form-item>
         Or <a href="">
         立即注册！
       </a>
@@ -85,8 +84,8 @@
     name: "Login",
     data() {
       return {
-        validateStatus:'error',
-        text:'用户名或密码错误'
+        validateStatus: 'success',
+        message: ''
       }
     },
     beforeCreate() {
@@ -97,21 +96,24 @@
         e.preventDefault();
         this.form.validateFields((err, values) => {
           if (!err) {
-
-            axios.post('login.com', values)
-              .then((res) => {
+            axios.post('login.com', values).then((res) => {
+              if (res.data.userName) {
                 console.log(res.data)
-              })
+                this.validateStatus = 'success'
+                this.message = '登录成功'
+                setTimeout(() => {
+                  this.$store.commit('login')
+                  this.$router.push({
+                    name: 'home', params: {user: values.userName}
+                  })
+                }, 500)
 
+              } else {
+                this.validateStatus = 'error'
+                this.message = '用户名或密码错误'
+              }
+            })
             //console.log('Received values of form: ', values);
-
-
-            // this.$store.commit('login')
-            // this.$router.push({
-            //   name: 'home', params: {user: values.userName}
-            // })
-
-
           }
         })
       }
