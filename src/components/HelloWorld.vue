@@ -1,6 +1,14 @@
 <template>
   <div class="hello">
-    hello!
+    <a-breadcrumb :routes="routes">
+      <template slot="itemRender" slot-scope="{route, params, routes, paths}">
+      <span>
+        {{route.breadcrumbName}}
+      </span>
+      </template>
+    </a-breadcrumb>
+    <br/>
+    {{$route.path}}
   </div>
 </template>
 
@@ -11,29 +19,35 @@
       msg: String
     },
     data() {
+      const {lang} = this.$route.params
       return {
-        current: ['mail'],
-        openKeys: ['sub1']
+        basePath: ``,
+        routes: [
+          {
+            path: 'home',
+            breadcrumbName: '首页'
+          },
+          {
+            path: '',
+            breadcrumbName: '一级面包屑'
+          },
+          {
+            path:'hello',
+            breadcrumbName:'哈哈'
+          }
+        ],
       }
     },
-    methods: {
-      handleClick(e) {
-        console.log('click', e)
-      },
-      titleClick(e) {
-        console.log('titleClick', e)
-      },
-    },
-    watch: {
-      openKeys(val) {
-        console.log('openKeys', val)
-      }
-    }
+    methods: {},
+    watch: {}
   }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+  .hello {
+  }
+
   .user {
     margin: {
       top: 12px;

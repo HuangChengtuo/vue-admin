@@ -21,16 +21,7 @@
                 @click="()=> collapsed = !collapsed"
         />
         <h1 style="display: inline">{{this.$route.name}}</h1>
-
-        <a-dropdown class="user" placement="bottomRight">
-          <a-menu slot="overlay">
-            <a-menu-item key="1"><a-icon type="user" />1st menu item</a-menu-item>
-            <a-menu-item key="2"><a-icon type="user" />2nd menu item</a-menu-item>
-            <a-menu-divider />
-            <a-menu-item @click="logout" key="3"><a-icon type="logout" />注销</a-menu-item>
-          </a-menu>
-          <a-avatar :size="48" icon="user" :src="require('../assets/FBK.jpg')"/>
-        </a-dropdown>
+        <Avatar></Avatar>
       </a-layout-header>
       <a-layout-content :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }">
         <router-view></router-view>
@@ -42,29 +33,38 @@
 <script>
 
   import Menu from '@/components/Menu'
+  import Avatar from '@/components/Avatar'
 
   export default {
     name: 'home',
-    components: {Menu},
+    components: {Avatar, Menu},
     data() {
       return {
         collapsed: false
       }
     },
+    mounted() {
+      console.log(this.$route)
+    },
     methods: {
-      logout() {
-        this.$store.commit('logout')
-        this.$router.push('/login')
+      show() {
+        return JSON.stringify(this.$route)
       }
     }
+    // methods: {
+    //   logout() {
+    //     this.$store.commit('logout')
+    //     this.$router.push('/login')
+    //   }
+    // }
   }
 </script>
 <style scoped lang="scss">
   #home {
-    height: 100%;
+    min-height: 100%;
   }
 
-  .user {
+  .avatar {
     float: right;
     margin: {
       top: 12px;
