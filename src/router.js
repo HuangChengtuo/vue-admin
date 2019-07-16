@@ -15,7 +15,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/home'
+      redirect: '/home',
+      meta:{title:'asd'}
     },
     {
       path: '/login',
@@ -31,16 +32,18 @@ export default new Router({
       path: '/home/',
       name: 'home',
       component: Home,
+      meta: {title: '首页'},
       children: [
         {
           path: 'hello',
-          name:'hello',
-          component: HelloWorld
+          name: 'hello',
+          component: HelloWorld,
+          meta: {title: 'hello'}
         },
         {
           path: 'about',
           component: About,
-          name:'about'
+          name: 'about'
         }
       ],
       beforeEnter: (to, from, next) => {

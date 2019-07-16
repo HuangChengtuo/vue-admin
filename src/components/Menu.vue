@@ -1,5 +1,9 @@
 <template>
-
+<span>
+  <div class="logo">
+        <img alt="logo" src="../assets/DD.png"/>
+        <span v-show="!collapsed">DEMO</span>
+      </div>
   <a-menu
           mode="inline"
           :openKeys="openKeys"
@@ -45,6 +49,7 @@
       <a-menu-item key="12">Option 12</a-menu-item>
     </a-sub-menu>
   </a-menu>
+  </span>
 </template>
 
 <script>
@@ -99,7 +104,21 @@
 </script>
 
 <style scoped lang="scss">
-  #menu {
-    display: inline-block;
+  .logo {
+    height: 48px;
+    background: rgba(255, 255, 255, .2);
+    margin: 16px;
+    color: white;
+
+    span {
+      margin: {
+        left: 24px;
+      };
+    }
+
+    img {
+      height: 100%;
+      padding-left: 2px;
+    }
   }
 </style>

@@ -1,15 +1,8 @@
 <template>
   <div class="hello">
-    <a-breadcrumb :routes="routes">
-      <template slot="itemRender" slot-scope="{route, params, routes, paths}">
-      <span>
-        {{route.breadcrumbName}}
-      </span>
-      </template>
-    </a-breadcrumb>
-    <br/>
-    {{$route.path}}
+    <p>hello</p>
   </div>
+
 </template>
 
 <script>
@@ -19,27 +12,8 @@
       msg: String
     },
     data() {
-      const {lang} = this.$route.params
-      return {
-        basePath: ``,
-        routes: [
-          {
-            path: 'home',
-            breadcrumbName: '首页'
-          },
-          {
-            path: '',
-            breadcrumbName: '一级面包屑'
-          },
-          {
-            path:'hello',
-            breadcrumbName:'哈哈'
-          }
-        ],
-      }
-    },
-    methods: {},
-    watch: {}
+      return {}
+    }
   }
 </script>
 

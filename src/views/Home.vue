@@ -1,26 +1,17 @@
 <template>
-  <a-layout id="home">
+  <a-layout class="home">
     <a-layout-sider
             :trigger="null"
             collapsible
             v-model="collapsed"
             width="256px"
     >
-      <div class="logo">
-        <img alt="logo" src="../assets/DD.png"/>
-        <span v-show="!collapsed">DEMO</span>
-      </div>
       <Menu :collapsed="collapsed"></Menu>
     </a-layout-sider>
-
     <a-layout>
       <a-layout-header style="background: #fff; padding: 0">
-        <a-icon
-                class="trigger"
-                :type="collapsed ? 'menu-unfold' : 'menu-fold'"
-                @click="()=> collapsed = !collapsed"
-        />
-        <h1 style="display: inline">{{this.$route.name}}</h1>
+        <a-icon class="trigger" :type="collapsed ? 'menu-unfold' : 'menu-fold'" @click="()=> collapsed = !collapsed"/>
+        <Breadcrumb></Breadcrumb>
         <Avatar></Avatar>
       </a-layout-header>
       <a-layout-content :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }">
@@ -34,43 +25,21 @@
 
   import Menu from '@/components/Menu'
   import Avatar from '@/components/Avatar'
+  import Breadcrumb from '@/components/Breadcrumb'
 
   export default {
     name: 'home',
-    components: {Avatar, Menu},
+    components: {Avatar, Menu,Breadcrumb},
     data() {
       return {
         collapsed: false
       }
-    },
-    mounted() {
-      console.log(this.$route)
-    },
-    methods: {
-      show() {
-        return JSON.stringify(this.$route)
-      }
     }
-    // methods: {
-    //   logout() {
-    //     this.$store.commit('logout')
-    //     this.$router.push('/login')
-    //   }
-    // }
   }
 </script>
 <style scoped lang="scss">
-  #home {
+  .home {
     min-height: 100%;
-  }
-
-  .avatar {
-    float: right;
-    margin: {
-      top: 12px;
-      left: 24px;
-      right: 24px;
-    };
   }
 
   .trigger {
@@ -82,24 +51,6 @@
 
     :hover {
       color: #1890ff;
-    }
-  }
-
-  .logo {
-    height: 48px;
-    background: rgba(255, 255, 255, .2);
-    margin: 16px;
-    color: white;
-
-    span {
-      margin: {
-        left: 24px;
-      };
-    }
-
-    img {
-      height: 100%;
-      padding-left: 2px;
     }
   }
 </style>
