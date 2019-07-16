@@ -102,18 +102,16 @@
                 this.validateStatus = 'success'
                 this.message = '登录成功'
                 setTimeout(() => {
-                  this.$store.commit('login')
+                  this.$store.commit('login', res.data)
                   this.$router.push({
                     name: 'home', params: {user: values.userName}
                   })
                 }, 500)
-
               } else {
                 this.validateStatus = 'error'
                 this.message = '用户名或密码错误'
               }
             })
-            //console.log('Received values of form: ', values);
           }
         })
       }

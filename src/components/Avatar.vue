@@ -17,7 +17,7 @@
         注销
       </a-menu-item>
     </a-menu>
-    <a-avatar :size="48" icon="user" :src="require('../assets/FBK.jpg')"/>
+    <a-avatar size="large" icon="user" :src="require('../assets/FBK.jpg')"/>
   </a-dropdown>
 </template>
 

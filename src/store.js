@@ -6,11 +6,14 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     loginStatus: true,
-    accsee:[]
+    nickname: '黄秤砣',
+    department: ['销售部', '财务部', '客服部', '物流部']
   },
   mutations: {
-    login(state,) {
+    login(state, user) {
       state.loginStatus = true
+      state.nickname = user.nickname
+      state.department = user.department
     },
     logout(state) {
       state.loginStatus = false

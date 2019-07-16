@@ -17,6 +17,7 @@
         <span><a-icon type="home"/><span>首页</span></span>
       </router-link>
     </a-menu-item>
+
     <a-sub-menu key="sub1">
       <span slot="title"><a-icon type="user"/><span>个人中心</span></span>
       <a-menu-item key="information">
@@ -24,21 +25,19 @@
           <a-icon type="user"/>个人资料
         </router-link>
       </a-menu-item>
-
       <a-menu-item key="about">
         <router-link to="/user/about">
           <a-icon type="phone"/>About
         </router-link>
       </a-menu-item>
-
-      <a-menu-item key="1.3">Option 3</a-menu-item>
-      <a-menu-item key="1.4">Option 4</a-menu-item>
     </a-sub-menu>
+
     <a-sub-menu key="sub2">
       <span slot="title"><a-icon type="appstore"/><span>销售</span></span>
       <a-menu-item key="2.1">Option 5</a-menu-item>
       <a-menu-item key="2.2">Option 6</a-menu-item>
     </a-sub-menu>
+
     <a-sub-menu key="sub3">
       <span slot="title"><a-icon type="setting"/><span>财务</span></span>
       <a-menu-item key="9">Option 9</a-menu-item>
