@@ -2,8 +2,10 @@
   <a-dropdown class="avatar" placement="bottomRight">
     <a-menu slot="overlay">
       <a-menu-item key="1">
-        <a-icon type="user"/>
-        个人资料
+        <router-link to="/user/information">
+          <a-icon type="user"/>
+          个人资料
+        </router-link>
       </a-menu-item>
       <a-menu-item key="2">
         <a-icon type="user"/>

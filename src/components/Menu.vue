@@ -12,20 +12,22 @@
           theme="dark"
           v-model="selectedKeys"
   >
-
+    <a-menu-item key="home">
+      <router-link to="/home">
+        <span><a-icon type="home"/><span>首页</span></span>
+      </router-link>
+    </a-menu-item>
     <a-sub-menu key="sub1">
-      <span slot="title"><a-icon type="mail"/><span>Navigation One</span></span>
-      <a-menu-item key="1.1">
-        <router-link to="/home/hello">
-          <a-icon type="home"/>
-          主页
+      <span slot="title"><a-icon type="user"/><span>个人中心</span></span>
+      <a-menu-item key="information">
+        <router-link to="/user/information">
+          <a-icon type="user"/>个人资料
         </router-link>
       </a-menu-item>
 
-      <a-menu-item key="1.2">
-        <router-link to="/home/about">
-          <a-icon type="phone"/>
-          About
+      <a-menu-item key="about">
+        <router-link to="/user/about">
+          <a-icon type="phone"/>About
         </router-link>
       </a-menu-item>
 
@@ -33,16 +35,12 @@
       <a-menu-item key="1.4">Option 4</a-menu-item>
     </a-sub-menu>
     <a-sub-menu key="sub2">
-      <span slot="title"><a-icon type="appstore"/><span>Navigation Two</span></span>
+      <span slot="title"><a-icon type="appstore"/><span>销售</span></span>
       <a-menu-item key="2.1">Option 5</a-menu-item>
       <a-menu-item key="2.2">Option 6</a-menu-item>
-      <a-sub-menu key="sub3" title="Submenu">
-        <a-menu-item key="7">Option 7</a-menu-item>
-        <a-menu-item key="8">Option 8</a-menu-item>
-      </a-sub-menu>
     </a-sub-menu>
     <a-sub-menu key="sub3">
-      <span slot="title"><a-icon type="setting"/><span>Navigation Three</span></span>
+      <span slot="title"><a-icon type="setting"/><span>财务</span></span>
       <a-menu-item key="9">Option 9</a-menu-item>
       <a-menu-item key="10">Option 10</a-menu-item>
       <a-menu-item key="11">Option 11</a-menu-item>
@@ -64,27 +62,30 @@
         openKeys: ['sub1'],
         collapsedOpenKeys: [],
         uncollapsedOpenKeys: [],
-        selectedKeys: []
+        selectedKeys: [this.$route.name]
       }
     },
     watch: {
       collapsed: function () {
         if (this.collapsed) {
-          this.uncollapsedOpenKeys=this.openKeys
+          this.uncollapsedOpenKeys = this.openKeys
           this.openKeys = []
-        }else{
-          this.openKeys=this.uncollapsedOpenKeys
+        } else {
+          this.openKeys = this.uncollapsedOpenKeys
         }
       },
       openKeys: function () {
         if (this.collapsed && this.openKeys.length) {
           this.collapsedOpenKeys = this.openKeys
-        } else if(!this.collapsed){
+        } else if (!this.collapsed) {
           this.uncollapsedOpenKeys = this.openKeys
         }
       },
       selectedKeys: function () {
         this.uncollapsedOpenKeys = this.collapsedOpenKeys
+      },
+      $route:function () {
+        this.selectedKeys=[this.$route.name]
       }
     },
     methods: {
