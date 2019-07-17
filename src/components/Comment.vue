@@ -8,7 +8,7 @@
       />
       <div slot="content">
         <a-form-item>
-          <a-textarea :rows="4" @change="handleChange" :value="value"></a-textarea>
+          <a-textarea placeholder="有什么想和大家分享的？" :rows="4" @change="handleChange" :value="value"></a-textarea>
         </a-form-item>
         <a-form-item>
           <a-button
@@ -45,6 +45,7 @@
 
   import moment from 'moment'
   import 'moment/locale/zh-cn'
+
   moment.locale('zh-cn')
 
   export default {
@@ -54,11 +55,25 @@
         comments: [
           {
             actions: ['Reply to'],
+            author: '全撸剩饭',
+            avatar: require('../assets/wtmsb.jpg'),
+            content: '今天和人去恰饭，摸了',
+            datetime: moment("2019-7-17 20:10").fromNow()
+          },
+          {
+            actions: ['Reply to'],
             author: '白上吹雪',
             avatar: require('../assets/FBK.jpg'),
-            content:'上班好累啊',
+            content: '上班好累啊',
             datetime: moment("2019-7-17 16:40").fromNow()
-          }
+          },
+          {
+            actions: ['Reply to'],
+            author: 'Mr_Quin',
+            avatar: require('../assets/quin.jpg'),
+            content: '草今天摸了，和美女约会了 ​​​​',
+            datetime: moment("2019-7-5 18:27").format("YYYY年MM月DD日 HH时mm分")
+          },
         ],
         submitting: false,
         value: '',

@@ -11,14 +11,20 @@
       <div><h3>2</h3></div>
       <div><h3>3</h3></div>
     </a-carousel>
+    <a-divider/>
     <Comment class="comment"></Comment>
+    <a-card title="员工指数">
+      <a href="#" slot="extra">more</a>
+      <div id="employeeIndex"></div>
+    </a-card>
   </div>
 </template>
 
 <script>
 
   import {mapState} from 'vuex'
-  import Comment from "@/components/Comment";
+  import Comment from "@/components/Comment"
+  import echarts from 'echarts'
 
   export default {
     name: 'home',
@@ -29,7 +35,32 @@
     computed: {
       ...mapState(['nickname', 'department'])
     },
-    methods: {}
+    mounted() {
+      this.radar()
+    },
+    methods: {
+      radar() {
+        let radarChart = echarts.init(document.getElementById('employeeIndex'))
+        radarChart.setOption({
+          title: {
+            text: 'ECharts 入门示例'
+          },
+          tooltip: {},
+          xAxis: {
+            data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+          },
+          yAxis: {},
+          series: [{
+            name: '销量',
+            type: 'bar',
+            data: [5, 20, 36, 10, 10, 20]
+          }]
+        })
+        window.onresize = () => {
+          radarChart.resize()
+        }
+      }
+    }
   }
 </script>
 <style scoped lang="scss">
@@ -48,8 +79,7 @@
   }
 
   .ant-carousel {
-    width: 40%;
-    float: right;
+
 
     ::v-deep .slick-slide {
       text-align: center;
@@ -65,6 +95,18 @@
   }
 
   .comment {
+    float: left;
     width: 55%;
+  }
+
+  .ant-card {
+    float: right;
+    width: 40%;
+
+    #employeeIndex {
+      height: 400px;
+      max-width: 600px;
+      width: 100%;
+    }
   }
 </style>
