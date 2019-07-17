@@ -8,8 +8,10 @@
         </router-link>
       </a-menu-item>
       <a-menu-item key="2">
-        <a-icon type="user"/>
-        2nd menu item
+        <a href="https://github.com/HuangChengtuo">
+          <a-icon type="github"/>
+          GitHub
+        </a>
       </a-menu-item>
       <a-menu-divider/>
       <a-menu-item @click="logout" key="3">
@@ -17,7 +19,7 @@
         注销
       </a-menu-item>
     </a-menu>
-    <a-avatar size="large" icon="user" :src="require('../assets/FBK.jpg')"/>
+    <a-avatar size="large" icon="user" :src="require('../assets/DD.png')"/>
   </a-dropdown>
 </template>
 
