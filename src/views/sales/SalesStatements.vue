@@ -17,33 +17,60 @@
         <div class="title">当月指标</div>
 
         <div id="chart3">
-          当月订单数：810<a-progress :percent="100" />
-          当月销售额：￥114514<a-progress :percent="86" />
-          出勤率：<a-progress :percent="65" status="active" />
+          当月订单数：810
+          <a-progress :percent="100"/>
+          当月销售额：￥114514
+          <a-progress :percent="86"/>
+          出勤率：
+          <a-progress :percent="65" status="active"/>
         </div>
       </a-card>
     </div>
+    <div>asdasd</div>
   </div>
 </template>
 
 <script>
 
   import echarts from 'echarts'
+  import {mapState} from 'vuex'
 
   export default {
     name: "Statements",
     data() {
       return {
-        chartWidth: window.innerWidth
+        chart1: {},
+        chart2: {}
       }
     },
     mounted() {
-      this.showChart1()
-      this.showChart2()
+
+      setTimeout(() => {
+        this.chart1 = echarts.init(document.getElementById('chart1'))
+        this.chart2 = echarts.init(document.getElementById('chart2'))
+        this.showChart1()
+        this.showChart2()
+      }, 10)
+
+      window.onresize = () => {
+        this.chart1.resize()
+        this.chart2.resize()
+      }
+
+    },
+    computed: {
+      ...mapState(['collapsed'])
+    },
+    watch: {
+      collapsed: function () {
+        setTimeout(() => {
+          this.chart1.resize()
+          this.chart2.resize()
+        }, 100)
+      }
     },
     methods: {
       showChart1() {
-        let chart1 = echarts.init(document.getElementById('chart1'))
         let option = {
           tooltip: {trigger: 'item'},
           grid: {x: 0, y: 0, x2: 0, y2: 20},
@@ -60,13 +87,10 @@
             type: 'bar'
           }]
         }
-        chart1.setOption(option)
-        window.onresize = () => {
-          chart1.resize()
-        }
+        this.chart1.setOption(option)
+
       },
       showChart2() {
-        let chart2 = echarts.init(document.getElementById('chart2'))
         let option = {
           grid: {x: 0, y: 0, x2: 0, y2: 20},
           tooltip: {trigger: 'item'},
@@ -86,10 +110,7 @@
             areaStyle: {}
           }]
         }
-        chart2.setOption(option)
-        window.onresize = () => {
-          chart2.resize()
-        }
+        this.chart2.setOption(option)
       }
     }
   }
@@ -117,12 +138,5 @@
   .charts {
     height: 150px;
     width: 100%;
-    max-width: 425px;
   }
-
-  /*#chart1 {*/
-  /*  height: 150px;*/
-  /*  width: 100%;*/
-  /*  max-width: 425px;*/
-  /*}*/
 </style>

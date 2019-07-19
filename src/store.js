@@ -7,7 +7,8 @@ export default new Vuex.Store({
   state: {
     loginStatus: true,
     nickname: '黄秤砣',
-    department: ['销售部', '财务部', '客服部', '物流部']
+    department: ['销售部', '财务部', '客服部', '物流部'],
+    collapsed: false
   },
   mutations: {
     login(state, user) {
@@ -20,6 +21,9 @@ export default new Vuex.Store({
     },
     updateInformation(state, data) {
       state.nickname = data.nickname
+    },
+    changeCollapsed(state) {
+      state.collapsed = !state.collapsed
     }
   },
   actions: {}

@@ -10,7 +10,7 @@
     </a-layout-sider>
     <a-layout>
       <a-layout-header style="background: #fff; padding: 0">
-        <a-icon class="trigger" :type="collapsed ? 'menu-unfold' : 'menu-fold'" @click="()=> collapsed = !collapsed"/>
+        <a-icon class="trigger" :type="collapsed ? 'menu-unfold' : 'menu-fold'" @click="()=> this.$store.commit('changeCollapsed')"/>
         <Breadcrumb></Breadcrumb>
         <Avatar></Avatar>
       </a-layout-header>
@@ -26,14 +26,17 @@
   import Menu from '@/components/Menu'
   import Avatar from '@/components/Avatar'
   import Breadcrumb from '@/components/Breadcrumb'
+  import {mapState} from 'vuex'
 
   export default {
     name: "Layout",
     components: {Avatar, Menu, Breadcrumb},
     data() {
       return {
-        collapsed: false
       }
+    },
+    computed: {
+      ...mapState(['collapsed'])
     }
   }
 </script>

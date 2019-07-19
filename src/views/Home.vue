@@ -29,23 +29,37 @@
     name: 'home',
     components: {Comment},
     data() {
-      return {}
+      return {
+        radarChart: {}
+      }
     },
     computed: {
-      ...mapState(['nickname', 'department'])
+      ...mapState(['nickname', 'department', 'collapsed'])
     },
     mounted() {
-      this.radar()
+      setTimeout(() => {
+        this.radarChart = echarts.init(document.getElementById('employeeIndex'))
+        this.radar()
+      }, 10)
+      window.onresize = () => {
+        this.radarChart.resize()
+      }
+    },
+    watch: {
+      collapsed: function () {
+        setTimeout(() => {
+          this.radarChart.resize()
+        }, 100)
+      }
     },
     methods: {
       radar() {
-        let radarChart = echarts.init(document.getElementById('employeeIndex'))
-        radarChart.setOption({
+        this.radarChart.setOption({
           legend: {
             data: ['个人', '平均']
           },
-          tooltip:{
-            trigger:'item'
+          tooltip: {
+            trigger: 'item'
           },
           radar: {
             name: {
@@ -69,19 +83,16 @@
             type: 'radar',
             data: [
               {
-                value: [10, 8, 9, 7,8],
+                value: [10, 8, 9, 7, 8],
                 name: '个人'
               },
               {
-                value: [8, 7, 6, 8,5],
+                value: [8, 7, 6, 8, 5],
                 name: '平均'
               }
             ]
           }]
         })
-        window.onresize = () => {
-          radarChart.resize()
-        }
       }
     }
   }
@@ -128,7 +139,6 @@
 
     #employeeIndex {
       height: 400px;
-      max-width: 500px;
       width: 100%;
     }
   }
