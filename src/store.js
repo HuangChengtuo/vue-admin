@@ -17,6 +17,9 @@ export default new Vuex.Store({
     },
     logout(state) {
       state.loginStatus = false
+    },
+    updateInformation(state, data) {
+      state.nickname = data.nickname
     }
   },
   actions: {}

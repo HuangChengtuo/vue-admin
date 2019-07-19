@@ -14,7 +14,6 @@
     <a-divider/>
     <Comment class="comment"></Comment>
     <a-card title="员工指数">
-      <a href="#" slot="extra">more</a>
       <div id="employeeIndex"></div>
     </a-card>
   </div>
@@ -42,18 +41,42 @@
       radar() {
         let radarChart = echarts.init(document.getElementById('employeeIndex'))
         radarChart.setOption({
-          title: {
-            text: 'ECharts 入门示例'
+          legend: {
+            data: ['个人', '平均']
           },
-          tooltip: {},
-          xAxis: {
-            data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+          tooltip:{
+            trigger:'item'
           },
-          yAxis: {},
+          radar: {
+            name: {
+              textStyle: {
+                color: 'white',
+                backgroundColor: '#999',
+                borderRadius: 4,
+                padding: [3, 5]
+              }
+            },
+            indicator: [
+              {name: '出勤率', max: 10},
+              {name: '业绩', max: 10},
+              {name: '满意度', max: 10},
+              {name: '工作进度', max: 10},
+              {name: '项目数', max: 10},
+            ]
+          },
           series: [{
-            name: '销量',
-            type: 'bar',
-            data: [5, 20, 36, 10, 10, 20]
+            name: '员工指数',
+            type: 'radar',
+            data: [
+              {
+                value: [10, 8, 9, 7,8],
+                name: '个人'
+              },
+              {
+                value: [8, 7, 6, 8,5],
+                name: '平均'
+              }
+            ]
           }]
         })
         window.onresize = () => {
@@ -96,16 +119,16 @@
 
   .comment {
     float: left;
-    width: 55%;
+    width: 60%;
   }
 
   .ant-card {
     float: right;
-    width: 40%;
+    width: 35%;
 
     #employeeIndex {
       height: 400px;
-      max-width: 600px;
+      max-width: 500px;
       width: 100%;
     }
   }

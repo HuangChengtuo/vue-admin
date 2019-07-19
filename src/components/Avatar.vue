@@ -3,7 +3,7 @@
     <a-menu slot="overlay">
       <a-menu-item key="1">
         <router-link to="/user/information">
-          <a-icon type="user"/>
+          <a-icon type="idcard"/>
           个人资料
         </router-link>
       </a-menu-item>
