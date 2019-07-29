@@ -15,7 +15,7 @@
           'userName',
           { rules: [{ required: true, message: '请输入用户名！' }] }
         ]"
-                placeholder="用户名"
+                placeholder="用户名:hct,admin,a,b"
         >
           <a-icon
                   slot="prefix"
