@@ -29,7 +29,7 @@
       </a-menu-item>
       <a-menu-item key="2.2">
         <a-icon type="copy" />
-        Option 6
+        订单管理
       </a-menu-item>
     </a-sub-menu>
 

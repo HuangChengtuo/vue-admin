@@ -2,8 +2,9 @@
   <div class="information">
     <a-avatar :size="128"
               icon="user"
-              :src="require('../../assets/DD.png')"/>
-    <a-button class="upload" type="primary">上传新头像</a-button>
+              :src="require('../../assets/DD.png')" />
+    <a-button class="upload"
+              type="primary">上传新头像</a-button>
     <a-form :layout="formLayout"
             @submit="handleSubmit"
             :form="form">
@@ -11,7 +12,7 @@
                    :label-col="formItemLayout.labelCol"
                    :wrapper-col="formItemLayout.wrapperCol">
         <a-input v-decorator="['nickname',{initialValue:this.$store.state.nickname}]"
-                 placeholder="input placeholder"/>
+                 placeholder="input placeholder" />
       </a-form-item>
 
       <a-form-item label="性别"
@@ -31,20 +32,20 @@
       <a-form-item label="手机"
                    :label-col="formItemLayout.labelCol"
                    :wrapper-col="formItemLayout.wrapperCol">
-        <a-input v-decorator="['phone',{initialValue:'18958817571'}]"/>
+        <a-input v-decorator="['phone',{initialValue:'18958817571'}]" />
       </a-form-item>
 
       <a-form-item label="邮箱"
                    :label-col="formItemLayout.labelCol"
                    :wrapper-col="formItemLayout.wrapperCol">
         <a-input v-decorator="['email']"
-                 placeholder="请填写你的邮箱"/>
+                 placeholder="请填写你的邮箱" />
       </a-form-item>
 
       <a-form-item label="个人网站"
                    :label-col="formItemLayout.labelCol"
                    :wrapper-col="formItemLayout.wrapperCol">
-        <a-input v-decorator="['website',{initialValue:'https://github.com/HuangChengtuo'}]"/>
+        <a-input v-decorator="['website',{initialValue:'https://github.com/HuangChengtuo'}]" />
       </a-form-item>
 
       <a-form-item :wrapper-col="buttonItemLayout.wrapperCol">
@@ -59,62 +60,62 @@
 </template>
 
 <script>
-  import AFormItem from "ant-design-vue/es/form/FormItem";
+import AFormItem from "ant-design-vue/es/form/FormItem";
 
-  export default {
-    name: "Information",
-    components: {AFormItem},
-    data() {
-      return {
-        formLayout: 'horizontal',
-      }
+export default {
+  name: "Information",
+  components: { AFormItem },
+  data () {
+    return {
+      formLayout: 'horizontal',
+    }
+  },
+  beforeCreate () {
+    this.form = this.$form.createForm(this);
+  },
+  computed: {
+    formItemLayout () {
+      const { formLayout } = this;
+      return formLayout === 'horizontal' ? {
+        labelCol: { span: 4 },
+        wrapperCol: { span: 14 },
+      } : {}
     },
-    beforeCreate() {
-      this.form = this.$form.createForm(this);
-    },
-    computed: {
-      formItemLayout() {
-        const {formLayout} = this;
-        return formLayout === 'horizontal' ? {
-          labelCol: {span: 4},
-          wrapperCol: {span: 14},
-        } : {}
-      },
-      buttonItemLayout() {
-        const {formLayout} = this;
-        return formLayout === 'horizontal' ? {
-          wrapperCol: {span: 14, offset: 4},
-        } : {}
-      }
-    },
-    methods: {
-      handleSubmit(e) {
-        e.preventDefault();
-        this.form.validateFields((err, values) => {
-          if (!err) {
-            console.log(values);
-            this.$store.commit('updateInformation',values)
-            this.$message.success('修改成功')
-          }
-        });
-      }
+    buttonItemLayout () {
+      const { formLayout } = this;
+      return formLayout === 'horizontal' ? {
+        wrapperCol: { span: 14, offset: 4 },
+      } : {}
+    }
+  },
+  methods: {
+    handleSubmit (e) {
+      e.preventDefault();
+      this.form.validateFields((err, values) => {
+        if (!err) {
+          console.log(values);
+          this.$store.commit('updateInformation', values)
+          this.$message.success('修改成功')
+        }
+      });
     }
   }
+}
 </script>
 
 <style scoped lang="scss">
-  .ant-avatar {
-    margin: {
-      top: 16px;
-      left: 32px;
-      bottom: 32px;
-      right: 32px;
-    };
-    box-shadow: 0px 0px 10px gray;
+.ant-avatar {
+  margin: {
+    top: 16px;
+    left: 32px;
+    bottom: 32px;
+    right: 32px;
   }
+  box-shadow: 0px 0px 10px gray;
+}
 
-  .upload {
-    position: relative;
-    top: 20px;
-  }
+.upload {
+  position: relative;
+  top: 20px;
+}
 </style>
