@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    loginStatus: false,
+    loginStatus: true,
     nickname: '黄秤砣',
     department: ['销售部', '财务部', '客服部', '物流部'],
     collapsed: false
