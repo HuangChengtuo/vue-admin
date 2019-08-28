@@ -26,7 +26,7 @@ let users = [
     department: ['销售部', '财务部', '客服部', '物流部']
   }
 ]
-Mock.mock('login.com', (data) => {
+Mock.mock('/login', (data) => {
   let uploadUser = JSON.parse(data.body)
   let loginUser
   loginUser = {
