@@ -2,20 +2,20 @@
   <div>
     <a-comment>
       <a-avatar
-              slot="avatar"
-              :src="require('../assets/DD.png')"
-              alt="Han Solo"
+        slot="avatar"
+        :src="require('../assets/DD.png')"
+        alt="Han Solo"
       />
       <div slot="content">
         <a-form-item>
-          <a-textarea placeholder="有什么想和大家分享的？" :rows="4" @change="handleChange" :value="value"></a-textarea>
+          <a-textarea placeholder="有什么想和大家分享的？" :rows="4" :value="value" @change="handleChange" />
         </a-form-item>
         <a-form-item>
           <a-button
-                  htmlType="submit"
-                  :loading="submitting"
-                  @click="handleSubmit"
-                  type="primary"
+            :loading="submitting"
+            html-type="submit"
+            type="primary"
+            @click="handleSubmit"
           >
             发表动态
           </a-button>
@@ -23,26 +23,24 @@
       </div>
     </a-comment>
     <a-list
-            v-if="comments.length"
-            :dataSource="comments"
-            :header="'动态'"
-            itemLayout="horizontal"
+      v-if="comments.length"
+      :data-source="comments"
+      :header="'动态'"
+      item-layout="horizontal"
     >
       <a-list-item slot="renderItem" slot-scope="item">
         <a-comment
-                :author="item.author"
-                :avatar="item.avatar"
-                :content="item.content"
-                :datetime="item.datetime"
-        >
-        </a-comment>
+          :author="item.author"
+          :avatar="item.avatar"
+          :content="item.content"
+          :datetime="item.datetime"
+        />
       </a-list-item>
     </a-list>
   </div>
 </template>
 
 <script>
-
   import moment from 'moment'
   import 'moment/locale/zh-cn'
 
@@ -83,7 +81,7 @@
     methods: {
       handleSubmit() {
         if (!this.value) {
-          return;
+          return
         }
         this.submitting = true
         setTimeout(() => {

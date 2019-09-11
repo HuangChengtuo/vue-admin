@@ -1,21 +1,25 @@
 <template>
   <a-layout class="layout">
     <a-layout-sider
-            :trigger="null"
-            collapsible
-            v-model="collapsed"
-            width="256px"
+      v-model="collapsed"
+      :trigger="null"
+      collapsible
+      width="256px"
     >
-      <Menu :collapsed="collapsed"></Menu>
+      <Menu :collapsed="collapsed" />
     </a-layout-sider>
     <a-layout>
       <a-layout-header style="background: #fff; padding: 0">
-        <a-icon class="trigger" :type="collapsed ? 'menu-unfold' : 'menu-fold'" @click="()=> this.$store.commit('changeCollapsed')"/>
-        <Breadcrumb></Breadcrumb>
-        <Avatar></Avatar>
+        <a-icon
+          class="trigger"
+          :type="collapsed ? 'menu-unfold' : 'menu-fold'"
+          @click="()=> this.$store.commit('changeCollapsed')"
+        />
+        <Breadcrumb />
+        <Avatar />
       </a-layout-header>
       <a-layout-content :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }">
-        <router-view></router-view>
+        <router-view />
       </a-layout-content>
     </a-layout>
   </a-layout>
@@ -32,8 +36,7 @@
     name: "Layout",
     components: {Avatar, Menu, Breadcrumb},
     data() {
-      return {
-      }
+      return {}
     },
     computed: {
       ...mapState(['collapsed'])

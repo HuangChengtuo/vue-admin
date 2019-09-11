@@ -46,8 +46,8 @@ export default new Router({
         {
           path: 'salesStatements',
           name: 'salesStatements',
-          component:SalesStatements,
-          meta:{title:'销售报表'}
+          component: SalesStatements,
+          meta: {title: '销售报表'}
         }
       ]
     },

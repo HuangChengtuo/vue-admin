@@ -1,20 +1,22 @@
 <template>
   <div class="home">
     <header>
-      <a-avatar class="avatar" :size="64" icon="user" :src="require('../assets/DD.png')"/>
-      <div class="title">欢迎，{{this.nickname}}，工作辛苦了</div>
-      <div>{{this.department.join(' | ')}} -- XX项目组</div>
+      <a-avatar class="avatar" :size="64" icon="user" :src="require('../assets/DD.png')" />
+      <div class="title">
+        欢迎，{{ this.nickname }}，工作辛苦了
+      </div>
+      <div>{{ this.department.join(' | ') }} -- XX项目组</div>
     </header>
-    <a-divider/>
+    <a-divider />
     <a-carousel autoplay>
       <div><h3>1</h3></div>
       <div><h3>2</h3></div>
       <div><h3>3</h3></div>
     </a-carousel>
-    <a-divider/>
-    <Comment class="comment"></Comment>
+    <a-divider />
+    <Comment class="comment" />
     <a-card title="员工指数">
-      <div id="employeeIndex"></div>
+      <div id="employeeIndex" />
     </a-card>
   </div>
 </template>
@@ -26,7 +28,7 @@
   import echarts from 'echarts'
 
   export default {
-    name: 'home',
+    name: 'Home',
     components: {Comment},
     data() {
       return {
@@ -36,6 +38,13 @@
     computed: {
       ...mapState(['nickname', 'department', 'collapsed'])
     },
+    watch: {
+      collapsed: function () {
+        setTimeout(() => {
+          this.radarChart.resize()
+        }, 100)
+      }
+    },
     mounted() {
       setTimeout(() => {
         this.radarChart = echarts.init(document.getElementById('employeeIndex'))
@@ -43,13 +52,6 @@
       }, 10)
       window.onresize = () => {
         this.radarChart.resize()
-      }
-    },
-    watch: {
-      collapsed: function () {
-        setTimeout(() => {
-          this.radarChart.resize()
-        }, 100)
       }
     },
     methods: {

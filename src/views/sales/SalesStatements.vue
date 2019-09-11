@@ -2,35 +2,44 @@
   <div class="salesStatements">
     <div class="header">
       <a-card :hoverable="true">
-        <div class="title">销售额</div>
+        <div class="title">
+          销售额
+        </div>
         <p>￥114,514</p>
-        <div id="chart1" class="charts"></div>
+        <div id="chart1" class="charts" />
       </a-card>
 
       <a-card :hoverable="true">
-        <div class="title">月度订单数</div>
+        <div class="title">
+          月度订单数
+        </div>
         <p>810</p>
-        <div id="chart2" class="charts"></div>
+        <div id="chart2" class="charts" />
       </a-card>
 
       <a-card :hoverable="true">
-        <div class="title">当月指标</div>
+        <div class="title">
+          当月指标
+        </div>
 
         <div id="chart3">
           当月订单数：810
-          <a-progress :percent="100"/>
+          <a-progress :percent="100" />
           当月销售额：￥114514
-          <a-progress :percent="86"/>
+          <a-progress :percent="86" />
           出勤率：
-          <a-progress :percent="65" status="active"/>
+          <a-progress
+            :percent="65"
+            status="active"
+          />
         </div>
       </a-card>
     </div>
     <a-card title="订单概览">
       <div class="main">
-        <div id="chart4" class="charts"></div>
-        <div id="chart5" class="charts"></div>
-        <div id="chart6" class="charts"></div>
+        <div id="chart4" class="charts" />
+        <div id="chart5" class="charts" />
+        <div id="chart6" class="charts" />
       </div>
     </a-card>
   </div>
@@ -49,7 +58,7 @@
         chart2: {},
         chart4: {},
         chart5: {},
-        chart6:{}
+        chart6: {}
       }
     },
     mounted() {
@@ -89,7 +98,7 @@
     },
     methods: {
       showChart1() {
-        let option = {
+        const option = {
           tooltip: {trigger: 'item'},
           grid: {x: 0, y: 0, x2: 0, y2: 20},
           xAxis: {
@@ -108,7 +117,7 @@
         this.chart1.setOption(option)
       },
       showChart2() {
-        let option = {
+        const option = {
           grid: {x: 0, y: 0, x2: 0, y2: 20},
           tooltip: {trigger: 'item'},
           xAxis: {
@@ -130,7 +139,7 @@
         this.chart2.setOption(option)
       },
       showChart4() {
-        let option = {
+        const option = {
           tooltip: {
             trigger: 'item',
             formatter: "{a} <br/>{b} : {c} ({d}%)"
@@ -158,7 +167,7 @@
         this.chart4.setOption(option)
       },
       showChart5() {
-        let option = {
+        const option = {
           title: {
             text: '线上订单分布',
             x: 'center'
@@ -192,7 +201,7 @@
         this.chart5.setOption(option)
       },
       showChart6() {
-        let option = {
+        const option = {
           title: {
             text: '线下订单分布',
             x: 'center'

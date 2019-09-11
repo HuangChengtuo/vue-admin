@@ -1,6 +1,6 @@
 import Mock from 'mockjs'
 
-let users = [
+const users = [
   {
     userName: 'a',
     password: '123456',
@@ -27,11 +27,10 @@ let users = [
   }
 ]
 Mock.mock('/login', (data) => {
-  let uploadUser = JSON.parse(data.body)
-  let loginUser
-  loginUser = {
+  const uploadUser = JSON.parse(data.body)
+  const loginUser = {
     ...users.find((user) => {
-        return user.userName == uploadUser.userName && user.password == uploadUser.password
+        return user.userName === uploadUser.userName && user.password === uploadUser.password
       }
     )
   }
