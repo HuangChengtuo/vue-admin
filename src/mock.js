@@ -22,7 +22,7 @@ const users = [
   {
     userName: 'admin',
     password: '123456',
-    nickname: 'adminstrator',
+    nickname: 'administrator',
     department: ['销售部', '财务部', '客服部', '物流部']
   }
 ]

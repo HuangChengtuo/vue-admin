@@ -18,7 +18,6 @@
         </router-link>
       </a-menu-item>
 
-
       <a-sub-menu key="sub1">
         <span slot="title"><a-icon type="shop" /><span>销售</span></span>
         <a-menu-item key="salesStatements">
@@ -27,9 +26,11 @@
             销售报表
           </router-link>
         </a-menu-item>
-        <a-menu-item key="2.2">
-          <a-icon type="copy" />
-          订单管理
+        <a-menu-item key="onlineOrder">
+          <router-link :to="{name:'onlineOrder'}">
+            <a-icon type="copy" />
+            线上订单
+          </router-link>
         </a-menu-item>
       </a-sub-menu>
 

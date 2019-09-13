@@ -6,16 +6,13 @@
       class="login-form"
       @submit="handleSubmit"
     >
-      <img src="../assets/DD.png" />
+      <img src="../assets/DD.png">
       <h1 style="display: inline">
         DEMO
       </h1>
       <a-form-item>
         <a-input
-          v-decorator="[
-            'userName',
-            { rules: [{ required: true, message: '请输入用户名！' }] }
-          ]"
+          v-decorator="['userName',{ rules: [{ required: true, message: '请输入用户名！' }] }]"
           placeholder="用户名:hct,admin,a,b"
         >
           <a-icon slot="prefix" type="user" style="color: rgba(0,0,0,.25)" />
@@ -23,10 +20,7 @@
       </a-form-item>
       <a-form-item>
         <a-input
-          v-decorator="[
-            'password',
-            { rules: [{ required: true, message: '请输入密码！' }] }
-          ]"
+          v-decorator="['password',{ rules: [{ required: true, message: '请输入密码！' }] }]"
           type="password"
           placeholder="密码:123456"
         >
@@ -35,13 +29,7 @@
       </a-form-item>
       <a-form-item :validate-status="validateStatus" :help="message">
         <a-checkbox
-          v-decorator="[
-            'remember',
-            {
-              valuePropName: 'checked',
-              initialValue: true,
-            }
-          ]"
+          v-decorator="['remember',{valuePropName: 'checked',initialValue: true,}]"
           class="login-form-remember"
         >
           记住我

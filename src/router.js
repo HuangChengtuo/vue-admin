@@ -48,6 +48,12 @@ export default new Router({
           name: 'salesStatements',
           component: SalesStatements,
           meta: {title: '销售报表'}
+        },
+        {
+          path: 'onlineOrder',
+          name: 'onlineOrder',
+          meta: {title: '线上订单'},
+          component: () => import('@/views/sales/OnlineOrder')
         }
       ]
     },
