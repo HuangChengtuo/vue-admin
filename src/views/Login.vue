@@ -39,10 +39,6 @@
           登录
         </a-button>
       </a-form-item>
-      <a-form-item>
-        Or
-        <a href>立即注册！</a>
-      </a-form-item>
     </a-form>
   </div>
 </template>
@@ -69,7 +65,7 @@
           if (!err) {
             axios.post('/login', values).then((res) => {
               if (res.data.userName) {
-                console.log(res.data)
+                // console.log(res.data)
                 this.validateStatus = 'success'
                 this.message = '登录成功'
                 setTimeout(() => {
