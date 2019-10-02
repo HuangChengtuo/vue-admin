@@ -6,7 +6,9 @@
       collapsible
       width="256px"
     >
-      <Menu :collapsed="collapsed" />
+      <a-affix :offset-top="20">
+        <Menu :collapsed="collapsed" />
+      </a-affix>
     </a-layout-sider>
     <a-layout>
       <a-layout-header style="background: #fff; padding: 0">
@@ -27,37 +29,37 @@
 
 <script>
 
-  import Menu from '@/components/Menu'
-  import Avatar from '@/components/Avatar'
-  import Breadcrumb from '@/components/Breadcrumb'
-  import {mapState} from 'vuex'
+import Menu from '@/components/Menu'
+import Avatar from '@/components/Avatar'
+import Breadcrumb from '@/components/Breadcrumb'
+import {mapState} from 'vuex'
 
-  export default {
-    name: "Layout",
-    components: {Avatar, Menu, Breadcrumb},
-    data() {
-      return {}
-    },
-    computed: {
-      ...mapState(['collapsed'])
-    }
+export default {
+  name: "Layout",
+  components: {Avatar, Menu, Breadcrumb},
+  data() {
+    return {}
+  },
+  computed: {
+    ...mapState(['collapsed'])
   }
+}
 </script>
 
 <style scoped lang="scss">
-  .layout {
-    min-height: 100%;
-  }
+.layout {
+  min-height: 100%;
+}
 
-  .trigger {
-    font-size: 18px;
-    line-height: 64px;
-    padding: 0 24px;
-    cursor: pointer;
-    transition: color .3s;
+.trigger {
+  font-size: 18px;
+  line-height: 64px;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: color .3s;
 
-    :hover {
-      color: #1890ff;
-    }
+  :hover {
+    color: #1890ff;
   }
+}
 </style>

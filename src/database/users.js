@@ -1,4 +1,4 @@
-export const users = [
+export default [
   {
     userName: 'a',
     password: '123456',

@@ -70,7 +70,7 @@
             author: 'Mr_Quin',
             avatar: require('../assets/quin.jpg'),
             content: '草今天摸了，和美女约会了 ​​​​',
-            datetime: moment("2019-7-5 18:27").format("YYYY年MM月DD日 HH时mm分")
+            datetime: moment("2019-7-5 18:27").format("YYYY年MM月DD日 HH:mm")
           },
         ],
         submitting: false,

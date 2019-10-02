@@ -45,81 +45,81 @@
 
 <script>
 
-  import axios from 'axios'
+import axios from 'axios'
 
-  export default {
-    name: "Login",
-    data() {
-      return {
-        validateStatus: 'success',
-        message: ''
-      }
-    },
-    beforeCreate() {
-      this.form = this.$form.createForm(this)
-    },
-    methods: {
-      handleSubmit(e) {
-        e.preventDefault()
-        this.form.validateFields((err, values) => {
-          if (!err) {
-            axios.post('/login', values).then((res) => {
-              if (res.data.userName) {
-                // console.log(res.data)
-                this.validateStatus = 'success'
-                this.message = '登录成功'
-                setTimeout(() => {
-                  this.$store.commit('login', res.data)
-                  this.$router.push({
-                    name: 'home', params: {user: values.userName}
-                  })
-                }, 500)
-              } else {
-                this.validateStatus = 'error'
-                this.message = '用户名或密码错误'
-              }
-            })
-          }
-        })
-      }
+export default {
+  name: "Login",
+  data() {
+    return {
+      validateStatus: 'success',
+      message: ''
+    }
+  },
+  beforeCreate() {
+    this.form = this.$form.createForm(this)
+  },
+  methods: {
+    handleSubmit(e) {
+      e.preventDefault()
+      this.form.validateFields((err, values) => {
+        if (!err) {
+          axios.post('/login', values).then(res => {
+            if (res.data.userName) {
+              // console.log(res.data)
+              this.validateStatus = 'success'
+              this.message = '登录成功'
+              setTimeout(() => {
+                this.$store.commit('login', res.data)
+                this.$router.push({
+                  name: 'home', params: {user: values.userName}
+                })
+              }, 500)
+            } else {
+              this.validateStatus = 'error'
+              this.message = '用户名或密码错误'
+            }
+          })
+        }
+      })
     }
   }
+}
 </script>
 
 <style scoped lang="scss">
-  #login {
-    background: gray;
-    height: 100%;
+#login {
+  background: gray;
+  height: 100%;
+}
+
+#components-form-demo-normal-login {
+  background: white;
+  max-width: 400px;
+  padding: 24px {
+    top: 0px;
+  }
+  border-radius: 6px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  img {
+    width: 50%;
+    padding-right: 16px;
+    box-sizing: content-box;
   }
 
-  #components-form-demo-normal-login {
-    background: white;
-    max-width: 400px;
-    padding: 24px {
-      top: 0px;
-    }
-    border-radius: 6px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    img {
-      width: 50%;
-      padding-right: 16px;
-      box-sizing: content-box;
-    }
-
-    .login-form {
-      max-width: 300px;
-    }
-
-    .login-form-forgot {
-      float: right;
-    }
-
-    .login-form-button {
-      width: 100%;
-    }
+  .login-form {
+    max-width: 300px;
   }
+
+  .login-form-forgot {
+    float: right;
+  }
+
+  .login-form-button {
+    width: 100%;
+  }
+}
 </style>
