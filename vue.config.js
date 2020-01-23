@@ -1,4 +1,8 @@
 module.exports = {
-  lintOnSave: false,
-  publicPath: process.env.NODE_ENV === 'production' ? '/vue-admin/' : '/demo/'
+  devServer: {
+    open: true,
+    port: 8080
+  },
+  lintOnSave: 'warning',
+  publicPath: process.env.VUE_APP_PATH
 }
