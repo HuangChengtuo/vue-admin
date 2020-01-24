@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import layout from '@/views/layout'
+import cookie from 'js-cookie'
 
 Vue.use(VueRouter)
 
@@ -31,6 +32,18 @@ const routes = [
 
 const router = new VueRouter({
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.name === 'login') {
+    next()
+    return
+  }
+  if (cookie.get('token')) {
+    next()
+  } else {
+    next({ name: 'login' })
+  }
 })
 
 export default router

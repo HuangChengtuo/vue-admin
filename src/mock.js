@@ -6,7 +6,7 @@ Mock.mock('user/login', 'post', options => {
   for (const user of users) {
     if (user.username === data.username) {
       if (data.password === '123456') {
-        return { success: true }
+        return { success: true, token: Mock.Random.guid() }
       } else {
         return { success: false, message: '密码错误' }
       }

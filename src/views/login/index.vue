@@ -29,6 +29,7 @@
 
 <script>
 import axios from '@/utils/axios'
+import cookie from 'js-cookie'
 
 const login = (data) => {
   return axios({
@@ -61,6 +62,7 @@ export default {
           login(val).then(res => {
             console.log(res)
             if (res.success) {
+              cookie.set('token', res.token)
               this.loginStatus = 'success'
               this.loginMessage = '登录成功'
               this.$router.push({ name: 'homePage' })
