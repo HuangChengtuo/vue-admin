@@ -21,12 +21,12 @@
 </template>
 
 <script>
-import axios from '@/utils/axios'
+import axios from 'axios'
 
 const login = (data) => {
   return axios({
     url: 'user/login',
-    method: 'get',
+    method: 'post',
     data
   })
 }
