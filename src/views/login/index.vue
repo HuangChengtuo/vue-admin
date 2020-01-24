@@ -6,22 +6,29 @@
         DEMO
       </div>
       <a-form-item>
-        <a-input v-decorator="username" placeholder="用户名">
+        <a-input v-decorator="username" placeholder="用户名：admin，hct">
           <a-icon slot="prefix" type="user" />
         </a-input>
       </a-form-item>
       <a-form-item>
-        <a-input v-decorator="password" placeholder="密码" type="password">
+        <a-input v-decorator="password" placeholder="密码：123456" :type="showPassword ? 'text' : 'password'">
           <a-icon slot="prefix" type="lock" />
+          <a-icon
+            slot="suffix"
+            :type="showPassword ? 'eye-invisible' : 'eye'"
+            @click="showPassword = !showPassword"
+          />
         </a-input>
       </a-form-item>
-      <a-button html-type="submit" type="primary">登录</a-button>
+      <a-form-item :validate-status="loginStatus" :help="loginMessage">
+        <a-button html-type="submit" type="primary">登录</a-button>
+      </a-form-item>
     </a-form>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+import axios from '@/utils/axios'
 
 const login = (data) => {
   return axios({
@@ -35,9 +42,12 @@ export default {
   data() {
     return {
       logoImg: require('@/assets/DD.png'),
+      showPassword: false,
       form: null,
       username: ['username', { rules: [{ required: true, message: '请输入用户名' }], validateTrigger: 'blur' }],
-      password: ['password', { rules: [{ required: true, message: '请输入密码' }], validateTrigger: 'blur' }]
+      password: ['password', { rules: [{ required: true, message: '请输入密码' }], validateTrigger: 'blur' }],
+      loginStatus: '',
+      loginMessage: ''
     }
   },
   created() {
@@ -48,7 +58,17 @@ export default {
       e.preventDefault()
       this.form.validateFields((err, val) => {
         if (!err) {
-          login(val)
+          login(val).then(res => {
+            console.log(res)
+            if (res.success) {
+              this.loginStatus = 'success'
+              this.loginMessage = '登录成功'
+              this.$router.push({ name: 'homePage' })
+            } else {
+              this.loginStatus = 'error'
+              this.loginMessage = res.message
+            }
+          })
         }
       })
     }
@@ -65,7 +85,7 @@ export default {
     background: white;
     border-radius: 6px;
     display: inline-block;
-    padding: 0 24px 48px;
+    padding: 0 24px 24px;
     position: absolute;
     top: 50%;
     left: 50%;

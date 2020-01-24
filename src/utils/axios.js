@@ -8,14 +8,10 @@ const service = axios.create({
 
 service.interceptors.response.use(
   res => {
-    if (res.success) {
-      return res
-    } else {
-      message.error('请求失败')
-      return Promise.reject(new Error('error'))
-    }
+    return res.data
   },
   err => {
+    console.log(err)
     message.error(err.toString())
     return Promise.reject(err)
   }
