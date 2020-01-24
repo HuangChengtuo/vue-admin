@@ -21,6 +21,15 @@
 </template>
 
 <script>
+import axios from '@/utils/axios'
+
+const login = (data) => {
+  return axios({
+    url: 'user/login',
+    method: 'get',
+    data
+  })
+}
 
 export default {
   data() {
@@ -38,7 +47,9 @@ export default {
     loginFn(e) {
       e.preventDefault()
       this.form.validateFields((err, val) => {
-        console.log(err, val)
+        if (!err) {
+          login(val)
+        }
       })
     }
   }

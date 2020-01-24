@@ -1,9 +1,20 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import layout from '@/views/layout'
 
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    component: layout,
+    meta: { title: '首页' },
+    name: 'homePage',
+    path: '/home'
+  },
+  {
+    path: '/',
+    redirect: '/home'
+  },
   {
     component: () => import('@/views/login/index'),
     meta: { title: '登录' },
