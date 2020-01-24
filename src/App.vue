@@ -1,14 +1,11 @@
 <template>
   <div id="app">
-    <a-button>asdasd</a-button>
+    <router-view />
   </div>
 </template>
 
-<script>
-
-export default {
-  created() {
-    console.log('hello')
-  }
+<style>
+#app{
+  height: 100%;
 }
-</script>
+</style>
