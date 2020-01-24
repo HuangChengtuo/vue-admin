@@ -1,11 +1,16 @@
 module.exports = {
   root: true,
   env: { node: true },
-  extends: ['plugin:vue/essential', '@vue/standard'],
+  extends: ['plugin:vue/recommended', '@vue/standard'],
   parserOptions: { parser: 'babel-eslint' },
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'space-before-function-paren': [1, 'never']
+    'no-var': 2,
+    'prefer-const': 2,
+    'semi': 1,
+    'space-before-function-paren': [1, 'never'],
+    'vue/max-attributes-per-line': [1, { 'singleline': 10, 'multiline': { 'max': 1, 'allowFirstLine': false } }],
+    'vue/singleline-html-element-content-newline': 0,
   }
 }
