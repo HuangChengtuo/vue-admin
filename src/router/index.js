@@ -6,6 +6,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     component: () => import('@/views/login/index'),
+    meta: { title: '登录' },
     name: 'login',
     path: '/login'
   },

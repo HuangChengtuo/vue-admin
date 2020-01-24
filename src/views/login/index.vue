@@ -2,23 +2,16 @@
   <div id="login">
     <a-form id="login-form" :form="form" @submit="loginFn">
       <div class="header">
-        <img src="@/assets/DD.png">
+        <img :src="logoImg" alt="logo">
         DEMO
       </div>
       <a-form-item>
-        <a-input
-          v-decorator="['username',{ rules: [{ required: true, message: '请输入用户名' }], validateTrigger:'blur' }]"
-          placeholder="请输入用户名"
-        >
+        <a-input v-decorator="username" placeholder="用户名">
           <a-icon slot="prefix" type="user" />
         </a-input>
       </a-form-item>
       <a-form-item>
-        <a-input
-          v-decorator="['password',{ rules: [{ required: true, message: '请输入密码' }], validateTrigger:'blur' }]"
-          placeholder="请输入密码"
-          type="password"
-        >
+        <a-input v-decorator="password" placeholder="密码" type="password">
           <a-icon slot="prefix" type="lock" />
         </a-input>
       </a-form-item>
@@ -32,12 +25,14 @@
 export default {
   data() {
     return {
-      form: null
+      logoImg: require('@/assets/DD.png'),
+      form: null,
+      username: ['username', { rules: [{ required: true, message: '请输入用户名' }], validateTrigger: 'blur' }],
+      password: ['password', { rules: [{ required: true, message: '请输入密码' }], validateTrigger: 'blur' }]
     }
   },
   created() {
     this.form = this.$form.createForm(this)
-    console.log(this.form)
   },
   methods: {
     loginFn(e) {
