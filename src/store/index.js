@@ -5,11 +5,13 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    collapsed: false
   },
   mutations: {
+    changeCollapsed(state, flag) {
+      state.collapsed = flag
+    }
   },
-  actions: {
-  },
-  modules: {
-  }
+  actions: {},
+  modules: {}
 })
