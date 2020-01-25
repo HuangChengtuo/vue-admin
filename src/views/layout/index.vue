@@ -1,20 +1,26 @@
 <template>
   <a-layout id="components-layout-demo-basic">
-    <a-layout-sider breakpoint="xl" :collapsed="collapsed" @breakpoint="collapseSidebar">Sidebar</a-layout-sider>
+    <a-layout-sider breakpoint="xl" :collapsed="collapsed" @breakpoint="collapseSidebar">
+      <sidebar />
+    </a-layout-sider>
     <a-layout>
       <a-layout-header>
         <a-button @click="collapseSidebar(!collapsed)">!!</a-button>
         Header
       </a-layout-header>
-      <a-layout-content>Content</a-layout-content>
+      <a-layout-content>
+        <router-view />
+      </a-layout-content>
     </a-layout>
   </a-layout>
 </template>
 
 <script>
+import sidebar from './components/sidebar/menu'
 import { mapState } from 'vuex'
 
 export default {
+  components: { sidebar },
   computed: {
     ...mapState(['collapsed'])
   },
@@ -29,10 +35,6 @@ export default {
 <style lang="scss" scoped>
 #components-layout-demo-basic {
   height: 100%;
-
-  .ant-layout-sider {
-    background: #3ba0e9;
-  }
 
   .ant-layout-header {
     background: #7dbcea;
