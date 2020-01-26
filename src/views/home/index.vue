@@ -1,11 +1,14 @@
 <template>
-  <div>asdasd</div>
+  <div id="home">🏠🏡</div>
 </template>
 
 <script>
 export default {}
 </script>
 
-<style scoped>
-
+<style lang="scss">
+#home {
+  padding: 12px;
+  background: white;
+}
 </style>

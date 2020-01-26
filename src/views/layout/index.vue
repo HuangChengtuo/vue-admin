@@ -6,10 +6,19 @@
     <a-layout>
       <a-layout-header>
         <a-icon class="fold-icon" :type="foldIcon" @click="collapseSidebar(!collapsed)" />
-        Header
+        <a-breadcrumb>
+          <template v-for="route of $route.matched">
+            <a-breadcrumb-item v-if="route.meta.title" :key="route.name">
+              <a-icon v-if="route.meta.icon" :type="route.meta.icon" />
+              <span>{{ route.meta.title }}</span>
+            </a-breadcrumb-item>
+          </template>
+        </a-breadcrumb>
       </a-layout-header>
       <a-layout-content>
-        <router-view />
+        <transition>
+          <router-view />
+        </transition>
       </a-layout-content>
     </a-layout>
   </a-layout>
@@ -27,6 +36,9 @@ export default {
       return this.collapsed ? 'menu-unfold' : 'menu-fold'
     }
   },
+  created() {
+    console.log(this.$route.matched)
+  },
   methods: {
     collapseSidebar(collapsed) {
       this.$store.commit('changeCollapsed', collapsed)
@@ -35,7 +47,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 #components-layout-demo-basic {
   height: 100%;
 
@@ -45,12 +57,17 @@ export default {
 
     .fold-icon {
       font-size: 20px;
-      margin-right: 12px;
+      margin-right: 24px;
+    }
+
+    .ant-breadcrumb {
+      display: inline-block;
     }
   }
 
   .ant-layout-content {
-    background: rgba(16, 142, 233, 1);
+    background: #f0f2f5;
+    padding: 24px;
   }
 }
 </style>

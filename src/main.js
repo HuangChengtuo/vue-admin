@@ -9,7 +9,7 @@ import 'ant-design-vue/dist/antd.css'
 import mock from './mock'
 
 // css
-import '@/styles/fade.scss'
+import '@/styles/transition.scss'
 
 Vue.config.productionTip = false
 Vue.use(Antd)
