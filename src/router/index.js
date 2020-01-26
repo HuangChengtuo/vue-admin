@@ -21,6 +21,7 @@ const routes = [
     ]
   },
   {
+    component: layout,
     meta: { icon: 'laptop', title: '运维' },
     name: 'operation',
     path: '/operation',

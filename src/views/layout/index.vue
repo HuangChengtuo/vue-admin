@@ -1,11 +1,11 @@
 <template>
   <a-layout id="components-layout-demo-basic">
-    <a-layout-sider breakpoint="xl" :collapsed="collapsed" @breakpoint="collapseSidebar">
+    <a-layout-sider breakpoint="xl" width="240" :collapsed="collapsed" @breakpoint="collapseSidebar">
       <sidebar />
     </a-layout-sider>
     <a-layout>
       <a-layout-header>
-        <a-button @click="collapseSidebar(!collapsed)">!!</a-button>
+        <a-icon class="fold-icon" :type="foldIcon" @click="collapseSidebar(!collapsed)" />
         Header
       </a-layout-header>
       <a-layout-content>
@@ -22,7 +22,10 @@ import { mapState } from 'vuex'
 export default {
   components: { sidebar },
   computed: {
-    ...mapState(['collapsed'])
+    ...mapState(['collapsed']),
+    foldIcon() {
+      return this.collapsed ? 'menu-unfold' : 'menu-fold'
+    }
   },
   methods: {
     collapseSidebar(collapsed) {
@@ -37,8 +40,13 @@ export default {
   height: 100%;
 
   .ant-layout-header {
-    background: #7dbcea;
+    background: white;
     padding: 0 24px;
+
+    .fold-icon {
+      font-size: 20px;
+      margin-right: 12px;
+    }
   }
 
   .ant-layout-content {
