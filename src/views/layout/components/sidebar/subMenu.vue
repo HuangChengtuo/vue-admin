@@ -12,6 +12,7 @@
           :key="route.name"
           :routes="route"
         />
+        <!--children 中没有 show-->
         <a-menu-item v-else :key="route.name">
           <a-icon v-if="route.meta.icon" :type="route.meta.icon" />
           <span>{{ route.meta.title }}</span>

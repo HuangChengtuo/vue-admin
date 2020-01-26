@@ -1,8 +1,6 @@
 <template>
   <a-layout id="components-layout-demo-basic">
-    <a-layout-sider breakpoint="xl" width="240" :collapsed="collapsed" @breakpoint="collapseSidebar">
-      <sidebar />
-    </a-layout-sider>
+    <sidebar />
     <a-layout>
       <a-layout-header>
         <a-icon class="fold-icon" :type="foldIcon" @click="collapseSidebar(!collapsed)" />
@@ -25,7 +23,7 @@
 </template>
 
 <script>
-import sidebar from './components/sidebar/menu'
+import sidebar from './components/sidebar/index'
 import { mapState } from 'vuex'
 
 export default {
@@ -35,9 +33,6 @@ export default {
     foldIcon() {
       return this.collapsed ? 'menu-unfold' : 'menu-fold'
     }
-  },
-  created() {
-    console.log(this.$route.matched)
   },
   methods: {
     collapseSidebar(collapsed) {
