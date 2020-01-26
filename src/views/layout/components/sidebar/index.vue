@@ -53,9 +53,6 @@ export default {
       return arr
     }
   },
-  created() {
-    console.log(this.$route)
-  },
   methods: {
     collapseSidebar(collapsed) {
       this.$store.commit('changeCollapsed', collapsed)
