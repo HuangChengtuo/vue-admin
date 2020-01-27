@@ -4,7 +4,7 @@
     <a-layout>
       <header-bar />
       <a-layout-content>
-        <transition>
+        <transition mode="out-in">
           <router-view />
         </transition>
       </a-layout-content>

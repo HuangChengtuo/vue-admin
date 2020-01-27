@@ -5,8 +5,12 @@ Mock.mock('user/login', 'post', options => {
   const data = JSON.parse(options.body)
   for (const user of users) {
     if (user.username === data.username) {
-      if (data.password === '123456') {
-        return { success: true, token: Mock.Random.guid() }
+      if (data.password === user.password) {
+        return {
+          nickname: user.nickname,
+          success: true,
+          token: Mock.Random.guid()
+        }
       } else {
         return { success: false, message: '密码错误' }
       }

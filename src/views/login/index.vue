@@ -62,6 +62,7 @@ export default {
           login(val).then(res => {
             console.log(res)
             if (res.success) {
+              cookie.set('nickname', res.nickname)
               cookie.set('token', res.token)
               this.loginStatus = 'success'
               this.loginMessage = '登录成功'

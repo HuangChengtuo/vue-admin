@@ -10,7 +10,10 @@
       </template>
     </a-breadcrumb>
     <a-dropdown>
-      <img alt="avatar" class="avatar-img" :src="avatarImg">
+      <span class="avatar">
+        {{ nickname }}
+        <img alt="avatar" class="avatar-img" :src="avatarImg">
+      </span>
       <a-menu slot="overlay">
         <a-menu-item>
           <a-icon type="user" />
@@ -37,7 +40,8 @@ import cookie from 'js-cookie'
 export default {
   data() {
     return {
-      avatarImg: require('@/assets/aqua.jpg')
+      avatarImg: require('@/assets/aqua.jpg'),
+      nickname: cookie.get('nickname')
     }
   },
   computed: {
@@ -75,12 +79,19 @@ export default {
     display: inline-block;
   }
 
-  .avatar-img {
-    border-radius: 32px;
+  .avatar {
     float: right;
-    height: 64px;
-    width: 64px;
-    padding: 4px;
+    font-size: 16px;
+
+    $avatar-size: 64px;
+
+    &-img {
+      border-radius: $avatar-size / 2;
+      height: $avatar-size;
+      width: $avatar-size;
+      padding: 4px;
+      vertical-align: bottom;
+    }
   }
 }
 </style>

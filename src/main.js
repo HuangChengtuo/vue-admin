@@ -9,6 +9,7 @@ import 'ant-design-vue/dist/antd.css'
 import mock from './mock'
 
 // css
+import '@/styles/common.scss'
 import '@/styles/transition.scss'
 
 Vue.config.productionTip = false
