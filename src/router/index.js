@@ -21,6 +21,28 @@ const routes = [
     ]
   },
   {
+    component: layout,
+    meta: { title: '销售', icon: 'shopping-cart' },
+    name: 'sales',
+    path: '/sales',
+    show: true,
+    children: [
+      {
+        component: () => import('@/views/sales/salesStatement'),
+        meta: { title: '销售情况' },
+        name: 'salesStatement',
+        path: 'statement',
+        show: true
+      },
+      {
+        meta: { title: '线上订单' },
+        name: 'onlineOrder',
+        path: 'online-order',
+        show: true
+      }
+    ]
+  },
+  {
     meta: { title: '首页' },
     path: '/',
     redirect: '/home'
@@ -32,12 +54,11 @@ const routes = [
     path: '/login'
   },
   {
-    meta: { title: '首页' },
     component: () => import('@/views/404'),
     name: '404',
     path: '/404'
   },
-  { meta: { title: '首页' }, path: '*', redirect: '/404' }
+  { path: '*', redirect: '/404' }
 ]
 
 const router = new VueRouter({

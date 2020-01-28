@@ -1,13 +1,11 @@
 <template>
-  <a-layout id="components-layout-demo-basic">
+  <a-layout id="layout">
     <sidebar />
     <a-layout>
       <header-bar />
-      <a-layout-content>
-        <transition mode="out-in">
-          <router-view />
-        </transition>
-      </a-layout-content>
+      <transition mode="out-in">
+        <router-view />
+      </transition>
     </a-layout>
   </a-layout>
 </template>
@@ -22,12 +20,7 @@ export default {
 </script>
 
 <style lang="scss">
-#components-layout-demo-basic {
+#layout {
   height: 100%;
-
-  .ant-layout-content {
-    background: #f0f2f5;
-    padding: 24px;
-  }
 }
 </style>

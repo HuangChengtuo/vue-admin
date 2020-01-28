@@ -1,5 +1,5 @@
 <template>
-  <div id="home" class="content">
+  <div id="home" class="normal-content">
     <div>
       <img alt="avatar" class="avatar-img" :src="avatarImg">
       <div class="greeting">
