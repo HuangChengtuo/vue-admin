@@ -28,10 +28,10 @@ const routes = [
     show: true,
     children: [
       {
-        component: () => import('@/views/sales/salesStatement'),
-        meta: { title: '销售情况' },
-        name: 'salesStatement',
-        path: 'statement',
+        component: () => import('@/views/sales/salesCharts'),
+        meta: { title: '销售图表' },
+        name: 'salesCharts',
+        path: 'charts',
         show: true
       },
       {
