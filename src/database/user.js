@@ -2,7 +2,7 @@ export default [
   {
     username: 'admin',
     password: '123456',
-    nickname: 'admin'
+    nickname: 'Administrator'
   },
   {
     username: 'hct',

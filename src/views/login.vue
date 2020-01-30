@@ -2,7 +2,7 @@
   <div id="login">
     <a-form id="login-form" :form="form" @submit="loginFn">
       <div class="header">
-        <img :src="logoImg" alt="logo">
+        <img :src="require('@/assets/DD.png')" alt="logo">
         DEMO
       </div>
       <a-form-item>
@@ -42,7 +42,6 @@ const login = (data) => {
 export default {
   data() {
     return {
-      logoImg: require('@/assets/DD.png'),
       showPassword: false,
       form: null,
       username: ['username', { rules: [{ required: true, message: '请输入用户名' }], validateTrigger: 'blur' }],
@@ -93,7 +92,7 @@ export default {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 456px;
+    width: 432px;
 
     .header {
       font-size: 48px;

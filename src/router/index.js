@@ -12,7 +12,7 @@ const routes = [
     show: true,
     children: [
       {
-        component: () => import('@/views/home/index'),
+        component: () => import('@/views/home'),
         meta: { icon: 'home', title: '首页' },
         name: 'homePage',
         path: '',
@@ -35,9 +35,9 @@ const routes = [
         show: true
       },
       {
-        meta: { title: '线上订单' },
-        name: 'onlineOrder',
-        path: 'online-order',
+        meta: { title: '订单列表' },
+        name: 'orderList',
+        path: 'order-list',
         show: true
       }
     ]
@@ -48,7 +48,7 @@ const routes = [
     redirect: '/home'
   },
   {
-    component: () => import('@/views/login/index'),
+    component: () => import('@/views/login'),
     meta: { title: '登录' },
     name: 'login',
     path: '/login'

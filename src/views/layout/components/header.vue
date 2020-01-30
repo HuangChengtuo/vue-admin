@@ -12,7 +12,7 @@
     <a-dropdown>
       <span class="avatar">
         {{ nickname }}
-        <img alt="avatar" class="avatar-img" :src="avatarImg">
+        <img alt="avatar" class="avatar-img" :src="require('@/assets/aqua.jpg')">
       </span>
       <a-menu slot="overlay">
         <a-menu-item>
@@ -38,16 +38,13 @@ import { mapState } from 'vuex'
 import cookie from 'js-cookie'
 
 export default {
-  data() {
-    return {
-      avatarImg: require('@/assets/aqua.jpg'),
-      nickname: cookie.get('nickname')
-    }
-  },
   computed: {
     ...mapState(['collapsed']),
     foldIcon() {
       return this.collapsed ? 'menu-unfold' : 'menu-fold'
+    },
+    nickname() {
+      return cookie.get('nickname')
     }
   },
   methods: {

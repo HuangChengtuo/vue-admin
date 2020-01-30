@@ -1,7 +1,7 @@
 <template>
   <a-layout-sider id="sidebar" breakpoint="xl" width="240" :collapsed="collapsed" @breakpoint="collapseSidebar">
     <div class="title">
-      <img alt="logo" :src="logoImg">
+      <img alt="logo" :src="require('@/assets/DD.png')">
       <span v-show="!collapsed">DEMO</span>
     </div>
     <a-menu
@@ -37,11 +37,6 @@ import { mapState } from 'vuex'
 
 export default {
   components: { subMenu },
-  data() {
-    return {
-      logoImg: require('@/assets/DD.png')
-    }
-  },
   computed: {
     ...mapState(['collapsed']),
     defaultOpenKeys() {
