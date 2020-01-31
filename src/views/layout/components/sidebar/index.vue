@@ -7,9 +7,9 @@
     <a-menu
       mode="inline"
       theme="dark"
-      :default-open-keys="defaultOpenKeys"
-      :default-selected-keys="[$route.name]"
       :inline-collapsed="collapsed"
+      :open-keys.sync="openKeys"
+      :selected-keys="[$route.name]"
       @click="menuClick"
     >
       <template v-for="route of $router.options.routes">
@@ -37,18 +37,31 @@ import { mapState } from 'vuex'
 
 export default {
   components: { subMenu },
-  computed: {
-    ...mapState(['collapsed']),
-    defaultOpenKeys() {
-      const abbr = this.$route.matched
-      const arr = []
-      for (let i = 0; i < abbr.length - 1; i++) {
-        arr.push(abbr[i].name || '')
-      }
-      return arr
+  data() {
+    return {
+      openKeys: []
     }
   },
+  computed: {
+    ...mapState(['collapsed'])
+  },
+  watch: {
+    $route() {
+      this.changeOpenKeys()
+    }
+  },
+  created() {
+    this.changeOpenKeys()
+  },
   methods: {
+    changeOpenKeys() {
+      const newOpenKeys = []
+      const abbr = this.$route.matched
+      for (let i = 0; i < abbr.length - 1; i++) {
+        newOpenKeys.push(abbr[i].name || '')
+      }
+      this.openKeys = this.openKeys.concat(newOpenKeys)
+    },
     collapseSidebar(collapsed) {
       this.$store.commit('changeCollapsed', collapsed)
     },

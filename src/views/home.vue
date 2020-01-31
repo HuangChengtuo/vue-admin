@@ -7,6 +7,7 @@
         <div class="greeting-text">text text text</div>
       </div>
     </div>
+    <a-button @click="$router.push({name:'order'})">asd</a-button>
     <a-divider />
     <a-carousel autoplay>
       <div>易用</div>
@@ -42,7 +43,6 @@ import cookie from 'js-cookie'
 import echarts from 'echarts'
 import moment from 'moment'
 import { mapState } from 'vuex'
-
 
 export default {
   data() {

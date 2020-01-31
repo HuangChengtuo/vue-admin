@@ -42,7 +42,6 @@ export default {
   },
   created() {
     getList().then(res => {
-      console.log(res)
       this.tableData = res.list
     })
   },

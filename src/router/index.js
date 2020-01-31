@@ -58,6 +58,27 @@ const routes = [
     ]
   },
   {
+    component: layout,
+    meta: { title: '个人中心', icon: 'shopping-cart' },
+    name: 'user',
+    path: '/user',
+    show: true,
+    children: [
+      {
+        meta: { title: '权限' },
+        name: 'permission',
+        path: 'permission',
+        show: true
+      },
+      {
+        meta: { title: '信息' },
+        name: 'info',
+        path: 'info',
+        show: true
+      }
+    ]
+  },
+  {
     meta: { title: '首页' },
     path: '/',
     redirect: '/home'
