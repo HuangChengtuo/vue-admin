@@ -1,5 +1,6 @@
 import Mock from 'mockjs'
 import users from '@/database/user'
+import order from '@/database/order'
 
 Mock.mock('user/login', 'post', options => {
   const data = JSON.parse(options.body)
@@ -18,3 +19,5 @@ Mock.mock('user/login', 'post', options => {
   }
   return { success: false, message: '用户名不存在' }
 })
+
+Mock.mock('order/getList', 'get', { list: order })

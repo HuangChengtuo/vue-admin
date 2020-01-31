@@ -35,10 +35,25 @@ const routes = [
         show: true
       },
       {
+        component: () => import('@/views/sales/order/index'),
         meta: { title: '订单列表' },
-        name: 'orderList',
-        path: 'order-list',
-        show: true
+        name: 'order',
+        path: 'order',
+        show: true,
+        children: [
+          {
+            component: () => import('@/views/home'),
+            meta: { title: '新增订单' },
+            name: 'orderAdd',
+            path: 'add'
+          },
+          {
+            component: () => import('@/views/home'),
+            meta: { title: '修改订单' },
+            name: 'orderEdit',
+            path: 'edit'
+          }
+        ]
       }
     ]
   },
