@@ -7,7 +7,6 @@
         <div class="greeting-text">text text text</div>
       </div>
     </div>
-    <a-button @click="$router.push({name:'order'})">asd</a-button>
     <a-divider />
     <a-carousel autoplay>
       <div>易用</div>

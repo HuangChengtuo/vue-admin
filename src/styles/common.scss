@@ -2,4 +2,43 @@
   background: white;
   margin: 24px;
   padding: 24px;
+
+  .search-row {
+    display: inline-block;
+    width: 100%;
+    $search-item-width: 200px;
+    $search-item-margin: 0 24px 12px 0;
+
+    .left {
+      float: left;
+      width: 85%;
+
+      .ant-select {
+        margin: $search-item-margin;
+        width: $search-item-width;
+      }
+
+      & > .ant-input {
+        margin: $search-item-margin;
+        width: $search-item-width;
+      }
+
+      .ant-input-affix-wrapper {
+        margin: $search-item-margin;
+        width: $search-item-width;
+      }
+    }
+
+    .right {
+      float: right;
+
+      .ant-btn {
+        margin-left: 12px;
+      }
+    }
+  }
+
+  .btn-row {
+    margin-bottom: 24px;
+  }
 }

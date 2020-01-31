@@ -1,8 +1,9 @@
 import axios from '@/utils/axios'
 
-export function getList() {
+export function getList(data) {
   return axios({
     url: 'order/getList',
-    method: 'get'
+    method: 'get',
+    data
   })
 }
