@@ -4,7 +4,7 @@
     <a-layout>
       <header-bar />
       <transition mode="out-in">
-        <router-view />
+        <router-view :key="$route.name" />
       </transition>
     </a-layout>
   </a-layout>
@@ -22,5 +22,9 @@ export default {
 <style lang="scss">
 #layout {
   height: 100%;
+
+  .ant-layout {
+    position: relative;
+  }
 }
 </style>

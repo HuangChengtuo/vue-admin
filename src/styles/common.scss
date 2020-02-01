@@ -41,4 +41,18 @@
   .btn-row {
     margin-bottom: 24px;
   }
+
+  .bottom-btn-row {
+    background: white;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    text-align: right;
+    padding: 12px 24px;
+
+    .ant-btn {
+      margin-left: 12px;
+    }
+  }
 }

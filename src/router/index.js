@@ -42,7 +42,7 @@ const routes = [
         show: true,
         children: [
           {
-            component: () => import('@/views/home'),
+            component: () => import('@/views/sales/order/add'),
             meta: { title: '新增订单' },
             name: 'orderAdd',
             path: 'add'

@@ -22,5 +22,5 @@ Mock.mock('user/login', 'post', options => {
 
 Mock.mock('order/getList', 'get', options => {
   const data = JSON.parse(options.body) || {}
-  return { list: generateOrder(data.id, data.platform) }
+  return { list: generateOrder(data.id, data.platform, data.state) }
 })
