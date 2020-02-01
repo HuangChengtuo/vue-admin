@@ -42,14 +42,16 @@
 </template>
 
 <script>
+import { getList } from './api'
+
 const isNumber = (rule, value, callback) => {
-  if (isNaN(value) || !value.length) {
+  if (isNaN(value) || !value.toString().length) {
     callback(new Error('请输入数字'))
   }
   callback()
 }
 const isInt = (rule, value, callback) => {
-  if (Number.isInteger(Number(value)) && value.length) {
+  if (Number.isInteger(Number(value)) && value.toString().length) {
     callback()
   }
   callback(new Error('请输入整数'))
@@ -58,6 +60,7 @@ const isInt = (rule, value, callback) => {
 export default {
   data() {
     return {
+      isEdit: false,
       form: this.$form.createForm(this),
       goodsName: ['goodsName', { rules: [{ required: true, message: '请输入商品名' }], validateTrigger: 'blur' }],
       price: ['price', { rules: [{ required: true, validator: isNumber }], validateTrigger: 'blur' }],
@@ -66,14 +69,19 @@ export default {
     }
   },
   mounted() {
-    this.form.setFieldsValue({ goodsName: 'asd' })
+    if (this.$route.name === 'orderEdit') {
+      this.isEdit = true
+      getList({ id: this.$route.query.id }).then(res => {
+        this.form.setFieldsValue(res.list[0])
+      })
+    }
   },
   methods: {
     addFn(e) {
       e.preventDefault()
       this.form.validateFields((err, val) => {
         if (!err) {
-          this.$message.success('添加成功')
+          this.$message.success(this.isEdit ? '修改成功' : '添加成功')
           this.$router.go(-1)
         }
       })

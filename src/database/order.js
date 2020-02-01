@@ -12,7 +12,7 @@ export default function(id, platform, state) {
   for (let i = 0; i < Mock.Random.integer(2, 810); i++) {
     const temp = {
       id: id || Mock.Random.integer(1000000000, 10000000000),
-      name: Mock.Random.cword(3, 8),
+      goodsName: Mock.Random.cword(3, 8),
       price: Mock.Random.float(100, 5000, 0, 2),
       quantity: Mock.Random.integer(1, 999),
       platform: platform || selectPlatform(platformList),

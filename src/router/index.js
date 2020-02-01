@@ -48,7 +48,7 @@ const routes = [
             path: 'add'
           },
           {
-            component: () => import('@/views/home'),
+            component: () => import('@/views/sales/order/add'),
             meta: { title: '修改订单' },
             name: 'orderEdit',
             path: 'edit'

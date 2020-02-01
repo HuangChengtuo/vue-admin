@@ -32,7 +32,7 @@
       :pagination="page"
     >
       <a-table-column title="订单号" data-index="id" />
-      <a-table-column title="商品名" data-index="name" />
+      <a-table-column title="商品名" data-index="goodsName" />
       <a-table-column title="单价" data-index="price" />
       <a-table-column title="数量" data-index="quantity" />
       <a-table-column title="总价" data-index="sum" />
@@ -42,7 +42,9 @@
         <template slot-scope="row">
           <a @click="editFn(row)">修改</a>
           <a-divider type="vertical" />
-          <a>删除</a>
+          <a-popconfirm title="确认删除订单？" ok-text="确认" cancel-text="取消" @confirm="deleteFn(row)">
+            <a>删除</a>
+          </a-popconfirm>
         </template>
       </a-table-column>
     </a-table>
@@ -89,9 +91,13 @@ export default {
     },
     editFn(row) {
       this.$router.push({
-        name: 'homePage',
-        params: { row }
+        name: 'orderEdit',
+        query: { id: row.id }
       })
+    },
+    deleteFn(row) {
+      this.$message.success('删除成功')
+      this.getListFn()
     }
   }
 }
