@@ -9,6 +9,7 @@ Mock.mock('user/login', 'post', options => {
       if (data.password === user.password) {
         return {
           nickname: user.nickname,
+          permission: user.permission,
           success: true,
           token: Mock.Random.guid()
         }

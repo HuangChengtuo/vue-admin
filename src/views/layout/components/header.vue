@@ -56,6 +56,7 @@ export default {
     },
     logout() {
       cookie.remove('token')
+      cookie.remove('permission')
       this.$router.push({ name: 'login' })
     }
   }

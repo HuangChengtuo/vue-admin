@@ -8,6 +8,8 @@ Vue.use(VueRouter)
 const routes = [
   {
     component: layout,
+    meta: { title: '首页' },
+    name: 'homeLayout',
     path: '/home/',
     show: true,
     children: [
@@ -59,12 +61,13 @@ const routes = [
   },
   {
     component: layout,
-    meta: { title: '个人中心', icon: 'shopping-cart' },
+    meta: { title: '个人中心', icon: 'user' },
     name: 'user',
     path: '/user',
     show: true,
     children: [
       {
+        component: () => import('@/views/user/permission'),
         meta: { title: '权限' },
         name: 'permission',
         path: 'permission',
@@ -90,6 +93,11 @@ const routes = [
     path: '/login'
   },
   {
+    component: () => import('@/views/noPermission'),
+    name: 'noPermission',
+    path: '/no-permission'
+  },
+  {
     component: () => import('@/views/404'),
     name: '404',
     path: '/404'
@@ -102,12 +110,19 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
+  const guest = ['login', '404', 'noPermission']
+  let permission = cookie.get('permission')
+  permission = permission ? JSON.parse(permission).concat(guest) : guest
   if (to.name === 'login') {
     next()
     return
   }
   if (cookie.get('token')) {
-    next()
+    if (permission.includes(to.name) || permission.includes('all')) {
+      next()
+    } else {
+      next({ name: 'noPermission' })
+    }
   } else {
     next({ name: 'login' })
   }

@@ -63,6 +63,7 @@ export default {
             if (res.success) {
               cookie.set('nickname', res.nickname)
               cookie.set('token', res.token)
+              cookie.set('permission', res.permission)
               this.loginStatus = 'success'
               this.loginMessage = '登录成功'
               this.$router.push({ name: 'homePage' })
