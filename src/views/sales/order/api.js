@@ -7,3 +7,10 @@ export function getList(data) {
     data
   })
 }
+
+export function getLogistics() {
+  return axios({
+    url: 'order/logistics',
+    method: 'get'
+  })
+}

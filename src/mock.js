@@ -1,6 +1,6 @@
 import Mock from 'mockjs'
 import users from '@/database/user'
-import generateOrder from '@/database/order'
+import { generateOrder, generateLogistics } from '@/database/order'
 
 Mock.mock('user/login', 'post', options => {
   const data = JSON.parse(options.body)
@@ -24,3 +24,5 @@ Mock.mock('order/getList', 'get', options => {
   const data = JSON.parse(options.body) || {}
   return { list: generateOrder(data.id, data.platform, data.state) }
 })
+
+Mock.mock('order/logistics', 'get', generateLogistics())
