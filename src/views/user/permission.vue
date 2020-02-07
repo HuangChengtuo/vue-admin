@@ -3,6 +3,7 @@
     <a-tree
       v-model="permission"
       checkable
+      checkStrictly
       defaultExpandAll
       :replace-fields="replaceFields"
       :tree-data="treeData"
@@ -27,15 +28,9 @@ export default {
       treeData: JSON.parse(JSON.stringify(this.$router.options.routes))
     }
   },
-  watch: {
-    checkedKeys(val) {
-      console.log('onCheck', val)
-    }
-  },
   created() {
     this.validateArr(this.treeData)
     this.formatArr(this.treeData)
-    console.log(this.permission)
   },
   methods: {
     formatArr(arr) {
@@ -61,7 +56,9 @@ export default {
     },
     changePermission() {
       this.$message.success('权限修改成功')
-      cookie.set('permission', this.permission)
+      if (this.permission.checked) {
+        cookie.set('permission', this.permission.checked)
+      }
     }
   }
 }
