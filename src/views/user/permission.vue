@@ -19,6 +19,7 @@
 </template>
 <script>
 import cookie from 'js-cookie'
+import { mapState } from 'vuex'
 
 export default {
   data() {
@@ -28,7 +29,11 @@ export default {
       treeData: JSON.parse(JSON.stringify(this.$router.options.routes))
     }
   },
+  computed: {
+    ...mapState(['whiteList'])
+  },
   created() {
+    this.permission = this.permission.concat(this.whiteList)
     this.validateArr(this.treeData)
     this.formatArr(this.treeData)
   },

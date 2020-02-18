@@ -4,6 +4,7 @@ module.exports = {
   extends: ['plugin:vue/recommended', '@vue/standard'],
   parserOptions: { parser: 'babel-eslint' },
   rules: {
+    'comma-spacing': 1,
     'eqeqeq': [2, 'smart'],
     'no-console': process.env.NODE_ENV === 'production' ? 1 : 0,
     'no-debugger': process.env.NODE_ENV === 'production' ? 1 : 0,

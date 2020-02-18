@@ -6,7 +6,7 @@
         DEMO
       </div>
       <a-form-item>
-        <a-input v-decorator="username" placeholder="用户名：admin，hct">
+        <a-input v-decorator="username" placeholder="用户名：admin，hct，guest，test">
           <a-icon slot="prefix" type="user" />
         </a-input>
       </a-form-item>

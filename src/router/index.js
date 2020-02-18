@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from '@/store/index'
 import layout from '@/views/layout'
 import cookie from 'js-cookie'
 
@@ -75,7 +76,7 @@ const routes = [
       },
       {
         meta: { title: '信息' },
-        name: 'info',
+        name: 'userInfo',
         path: 'info',
         show: true
       }
@@ -110,9 +111,9 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const guest = ['login', '404', 'noPermission']
+  const whiteList = store.state.whiteList
   let permission = cookie.get('permission')
-  permission = permission ? JSON.parse(permission).concat(guest) : guest
+  permission = permission ? JSON.parse(permission).concat(whiteList) : whiteList
   if (to.name === 'login') {
     next()
     return

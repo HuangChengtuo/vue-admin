@@ -5,7 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    collapsed: false
+    collapsed: false,
+    whiteList: ['login', '404', 'noPermission', 'homeLayout', 'homePage']
   },
   mutations: {
     changeCollapsed(state, flag) {
