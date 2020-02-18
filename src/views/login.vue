@@ -2,7 +2,7 @@
   <div id="login">
     <a-form id="login-form" :form="form" @submit="loginFn">
       <div class="header">
-        <img :src="require('@/assets/DD.png')" alt="logo">
+        <img src="@/assets/DD.png" alt="logo">
         DEMO
       </div>
       <a-form-item>

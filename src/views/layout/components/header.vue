@@ -12,7 +12,7 @@
     <a-dropdown>
       <span class="avatar">
         {{ nickname }}
-        <img alt="avatar" class="avatar-img" :src="require('@/assets/aqua.jpg')">
+        <img alt="avatar" class="avatar-img" src="@/assets/aqua.jpg">
       </span>
       <a-menu slot="overlay">
         <a-menu-item>

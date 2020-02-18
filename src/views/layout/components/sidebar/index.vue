@@ -1,7 +1,7 @@
 <template>
   <a-layout-sider id="sidebar" breakpoint="xl" width="240" :collapsed="collapsed" @breakpoint="collapseSidebar">
     <div class="title">
-      <img alt="logo" :src="require('@/assets/DD.png')">
+      <img alt="logo" src="@/assets/DD.png">
       <span v-show="!collapsed">DEMO</span>
     </div>
     <a-menu

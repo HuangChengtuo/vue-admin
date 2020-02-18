@@ -9,6 +9,6 @@ export default [
     username: 'hct',
     password: '123456',
     nickname: '黄秤砣',
-    permission: ['homePage', 'permission']
+    permission: ['all']
   }
 ]

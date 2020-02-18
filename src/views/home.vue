@@ -1,7 +1,7 @@
 <template>
   <div id="home" class="normal-content">
     <div>
-      <img alt="avatar" class="avatar-img" :src="require('@/assets/aqua.jpg')">
+      <img alt="avatar" class="avatar-img" src="@/assets/aqua.jpg">
       <div class="greeting">
         <div class="greeting-text">{{ greeting }}</div>
         <div class="greeting-text">text text text</div>
