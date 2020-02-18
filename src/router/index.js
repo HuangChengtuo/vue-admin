@@ -10,7 +10,6 @@ const routes = [
   {
     component: layout,
     meta: { title: '首页' },
-    name: 'homeLayout',
     path: '/home/',
     show: true,
     children: [
@@ -94,12 +93,12 @@ const routes = [
     path: '/login'
   },
   {
-    component: () => import('@/views/noPermission'),
+    component: () => import('@/views/errorPage'),
     name: 'noPermission',
     path: '/no-permission'
   },
   {
-    component: () => import('@/views/404'),
+    component: () => import('@/views/errorPage'),
     name: '404',
     path: '/404'
   },
