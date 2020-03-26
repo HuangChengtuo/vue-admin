@@ -138,7 +138,7 @@ export default {
             { name: '业绩', max: 10 },
             { name: '满意度', max: 10 },
             { name: '工作进度', max: 10 },
-            { name: '项目数', max: 10 },
+            { name: '项目数', max: 10 }
           ]
         },
         series: [{

@@ -15,9 +15,9 @@
         <img alt="avatar" class="avatar-img" src="@/assets/aqua.jpg">
       </span>
       <a-menu slot="overlay">
-        <a-menu-item>
+        <a-menu-item @click="goToUserInfo">
           <a-icon type="user" />
-          1st menu item
+          个人信息
         </a-menu-item>
         <a-menu-item @click="goToGitHub">
           <a-icon type="github" />
@@ -50,6 +50,11 @@ export default {
   methods: {
     collapseSidebar(collapsed) {
       this.$store.commit('changeCollapsed', collapsed)
+    },
+    goToUserInfo() {
+      if (this.$route.name !== 'userInfo') {
+        this.$router.push({ name: 'userInfo' })
+      }
     },
     goToGitHub() {
       window.open('https://github.com/HuangChengtuo/vue-admin')

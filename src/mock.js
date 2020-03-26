@@ -27,3 +27,13 @@ Mock.mock('order/getList', 'get', options => {
 })
 
 Mock.mock('order/logistics', 'get', generateLogistics())
+Mock.mock('uploadImg', 'post', options => {
+  return { success: true, status: 'done' }
+})
+Mock.mock('user/getInfo', 'get', () => {
+  return Mock.mock({
+    'sex|1': ['男', '女'],
+    'phone': /^[1]([3-9])[0-9]{9}$/,
+    'e-mail': Mock.Random.email()
+  })
+})

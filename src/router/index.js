@@ -74,6 +74,7 @@ const routes = [
         show: true
       },
       {
+        component: () => import('@/views/user/info'),
         meta: { title: '信息' },
         name: 'userInfo',
         path: 'info',

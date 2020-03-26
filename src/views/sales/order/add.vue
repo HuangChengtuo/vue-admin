@@ -123,7 +123,7 @@ export default {
   methods: {
     addFn(e) {
       e.preventDefault()
-      this.form.validateFields((err, val) => {
+      this.form.validateFields(err => {
         if (!err) {
           this.$message.success(this.isEdit ? '修改成功' : '添加成功')
           this.$router.go(-1)
