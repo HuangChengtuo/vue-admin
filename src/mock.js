@@ -27,6 +27,7 @@ Mock.mock('order/getList', 'get', options => {
 })
 
 Mock.mock('order/logistics', 'get', generateLogistics())
+
 Mock.mock('uploadImg', 'post', options => {
   return { success: true, status: 'done' }
 })

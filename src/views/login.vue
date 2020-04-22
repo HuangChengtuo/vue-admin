@@ -43,23 +43,21 @@ export default {
   data() {
     return {
       showPassword: false,
-      form: null,
+      form: this.$form.createForm(this),
       username: ['username', { rules: [{ required: true, message: '请输入用户名' }], validateTrigger: 'blur' }],
       password: ['password', { rules: [{ required: true, message: '请输入密码' }], validateTrigger: 'blur' }],
       loginStatus: '',
       loginMessage: ''
     }
   },
-  created() {
-    this.form = this.$form.createForm(this)
-  },
   methods: {
     loginFn(e) {
       e.preventDefault()
+      this.loginStatus = ''
+      this.loginMessage = ''
       this.form.validateFields((err, val) => {
         if (!err) {
           login(val).then(res => {
-            console.log(res)
             if (res.success) {
               cookie.set('nickname', res.nickname)
               cookie.set('token', res.token)
